@@ -12,6 +12,7 @@ export default function LandingPage() {
               <h2 className='welcome'>Welcome to Equip</h2>
               <h4 className='quote'>"Restock for the dungeons ahead!"</h4>
             </div>
+            
             <div className='SplashBox2'>
             </div>
           </div>
