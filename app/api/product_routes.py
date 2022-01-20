@@ -2,6 +2,7 @@ from app.config import Config
 from flask import Flask, Blueprint, jsonify, json, request, session
 from app.models import db, User, Product
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import current_user, login_required
 
 product_routes= Blueprint("products", __name__)
 
