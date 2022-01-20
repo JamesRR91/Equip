@@ -19,6 +19,16 @@ const updateProduct = (product) => {
     return {type: UPDATE_PRODUCT, product};
 }
 
+export const getProducts = () => async(dispatch) => {
+    const response = await fetch('/api/products/');
+
+    if (response.ok) {
+        const products = await response.json();
+        dispatch(loadProducts(products.all_products));
+        return products;
+    }
+}
+
 export const makeProduct = (newProduct) => async(dispatch) => {
     const response= await fetch ('/api/products/create', {
         method: 'post',
@@ -59,3 +69,35 @@ export const changeProduct = (product) => async(dispatch) => {
         return data;
     }
 }
+
+const initialState = { inventory: {} };
+
+const productReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case LOAD_PRODUCTS: {
+      const newState = { ...state, inventory: {} };
+      for (let i = 0; i < action.products.length; i++) {
+        let product = action.products[i];
+        newState.inventory[product.id] = product;
+      }
+      return newState;
+    };
+    case ADD_PRODUCT: {
+      const newState = { ...state, inventory: { ...state.inventory, [action.newProduct.id]: action.newProduct } };
+      return newState;
+    };
+    case REMOVE_PRODUCT: {
+      const newState = { ...state, inventory: { ...state.inventory } };
+      delete newState.inventory[action.product_id];
+      return newState;
+    };
+    case UPDATE_PRODUCT: {
+      const newState = { ...state, inventory: { ...state.inventory, [action.product.id]: action.product } };
+      return newState;
+    };
+    default:
+      return state;
+  }
+};
+
+export default productReducer;
