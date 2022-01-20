@@ -3,6 +3,7 @@ import './index.css';
 import { useSelector } from 'react-redux';
 import GetProducts from '../GetProducts/GetProducts';
 import { getProducts } from '../../store/products';
+import PostProduct from '../PostProduct/PostProduct';
 
 export default function LandingPage() {
     const sessionUser = useSelector((state) => state.session.user);
@@ -17,6 +18,7 @@ export default function LandingPage() {
 
             <div className='SplashBox2'>
             <GetProducts />
+            <PostProduct />
             </div>
           </div>
         </div>

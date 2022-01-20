@@ -22,7 +22,7 @@ export default function GetProducts() {
 
     return(
         <div className='get-products-parent'>
-            {products.map(({id, product_name, product_description, product_price, product_quantity, user_id}) => (
+            {products?.map(({id, product_name, product_description, product_price, product_quantity, user_id}) => (
                 <div className='product-container' key={id}>
                     <ul className='product-list'>
                         <li className='product-name'>{product_name}</li>
