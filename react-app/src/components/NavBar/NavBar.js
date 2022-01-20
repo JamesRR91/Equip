@@ -3,7 +3,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
-import ProfileButton from './ProfileButton.js'
+import ProfileButton from './ProfileButton.js';
+import PostProduct from '../PostProduct/PostProduct';
 import "./NavBar.css"
 
 const NavBar = ({loaded}) => {
@@ -15,6 +16,8 @@ const NavBar = ({loaded}) => {
       <li>
             <div id="profileButton">
                 <ProfileButton user={sessionUser}/>
+            </div>
+            <div className='post-product-button'>
             </div>
           </li>
     );
