@@ -22,7 +22,7 @@
     .SplashBox1 {
         margin-left: 100px;
         margin-right: 100px;
-        height: 50vw;
+        height: 20vw;
         width: 100vw;
         border-radius: 20px;
         position:absolute;
@@ -38,6 +38,7 @@
 }
 .SplashBox2{
     height: 100%;
+    margin-top: 100px;
     margin-left: 100px;
     margin-right: 100px;
     border-radius: 20px;
