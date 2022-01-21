@@ -18,7 +18,6 @@ export default function LandingPage() {
 
             <div className='SplashBox2'>
             <GetProducts />
-            <PostProduct />
             </div>
           </div>
         </div>

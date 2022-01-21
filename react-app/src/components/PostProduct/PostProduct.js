@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeProduct } from '../../store/products';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import './PostProduct.css';
 
 export default function PostProduct(){
@@ -37,16 +37,11 @@ export default function PostProduct(){
         };
         dispatch(makeProduct(newProduct));
         resetProduct();
+        return <Redirect to ='/' />
     }
 
     return (
         <div className='post-product-parent'>
-
-        <NavLink to={'/books/create_product'}>
-            <button className='product-button' onClick={() =>handleClick()}>
-            Add a Product
-            </button>
-        </NavLink>
         <div className='post-product'>
             <form className='product-data' onSubmit={handleSubmit}>
                 <label>Product Name: </label>
