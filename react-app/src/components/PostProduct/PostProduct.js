@@ -2,10 +2,12 @@ import { React, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeProduct } from '../../store/products';
 import { NavLink, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './PostProduct.css';
 
 export default function PostProduct(){
     const dispatch=useDispatch();
+    const history=useHistory();
     const [product_name, setName]= useState("");
     const [product_description, setDescription]= useState("");
     const [product_price, setPrice]= useState(null);
@@ -36,9 +38,11 @@ export default function PostProduct(){
             product_quantity
         };
         dispatch(makeProduct(newProduct));
-        resetProduct();
-        return <Redirect to ='/' />
+        console.log('WHATS THE NEW PRODUCT', newProduct);
+        history.push('/');
     }
+
+
 
     return (
         <div className='post-product-parent'>

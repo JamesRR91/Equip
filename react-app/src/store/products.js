@@ -49,6 +49,7 @@ export const makeProduct = (newProduct) => async(dispatch) => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(newProduct)
     });
+    console.log('FROM THE STORE', newProduct);
     const product = await response.json();
 
     if(response.ok) {

@@ -29,19 +29,13 @@ def get_one_product(id):
 @product_routes.route("/create_product", methods=['POST'])
 @login_required
 def add_product():
-    form=PostProductForm()
-    data=form.data
-    form['csrf_token'].data=request.cookies['csrf_token']
-
-    if form.validate_on_submit():
-        create_product = Product(product_name=request.json['product_name'],
-        product_description=request.json['product_description'],
-        product_price=request.json['product_price'],
-        product_quantity=request.json['product_quantity'],
-        user_id=current_user.get_id())
-        db.session.add(create_product)
-        db.session.commit()
-
+    create_product = Product(product_name=request.json['product_name'],
+    product_description=request.json['product_description'],
+    product_price=request.json['product_price'],
+    product_quantity=request.json['product_quantity'],
+    user_id=current_user.get_id())
+    db.session.add(create_product)
+    db.session.commit()
     return create_product.to_dict()
 # const data = { product_name: 'Dungeon Master Screen', product_description: 'For the untrusting DM to instill fear in their players.', product_price: 24.99, product_quantity: 4, user_id: 1}
 
@@ -56,3 +50,11 @@ def add_product():
 # .then(data => {
 #   console.log('Success:', data);
 # })
+@product_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_product(id):
+    product=Product.query.get(id)
+    db.session.delete(product)
+    db.session.commit()
+
+    return product.to_dict()

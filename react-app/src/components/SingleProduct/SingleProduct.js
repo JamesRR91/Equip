@@ -11,13 +11,12 @@ const { id } = useParams()
 
 const thisProductObj= useSelector((state) => state.product.inventory);
 const thisProduct = Object.values(thisProductObj);
-const thisProductId= thisProduct[id];
-const optionalChain=thisProduct?.[id]
+const thisProductId= thisProduct[id-1];
 const thisProductIdArray=Object.assign([], thisProductId)
+console.log ('THIS IS THE ID', id)
 console.log('You are wrong are you not?', thisProductObj);
 console.log('Maybe this?', thisProduct)
-console.log('IS THIS THE SAME', thisProductId)
-console.log('TRY THIS', optionalChain)
+console.log('OR THIS', thisProductId)
 
 useEffect(() => {
     dispatch(getOneProduct(id))
@@ -25,10 +24,12 @@ useEffect(() => {
 
 return (
     <div className='single-product-container'>
+        <div className='content'>
         <h1>{thisProductId.product_name}</h1>
         <p className='single-product-price'>{thisProductId.product_price}</p>
         <p className='single-product-desc'>{thisProductId.product_description}</p>
         <p className='single-product-quan'>{thisProductId.product_quantity}</p>
+        </div>
     </div>
 )
 }

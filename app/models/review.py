@@ -7,6 +7,7 @@ class Review(db.Model):
     review_text=db.Column(db.Text, nullable=False)
     user_id=db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     product_id=db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
+    product=db.relationship('Product', back_populates='review')
 
     def to_dict(self):
         return {
