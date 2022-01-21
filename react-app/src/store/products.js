@@ -1,10 +1,15 @@
 const LOAD_PRODUCTS = 'products/LOAD_PRODUCTS';
+const LOAD_ONE_PRODUCT = 'products/LOAD_ONE_PRODUCT';
 const ADD_PRODUCT = 'products/ADD_PRODUCT';
 const REMOVE_PRODUCT = 'products/REMOVE_PRODUCT';
 const UPDATE_PRODUCT = 'products/UPDATE_PRODUCT';
 
 const loadProducts=(products) => {
     return {type: LOAD_PRODUCTS, products}
+}
+
+const loadOneProduct=(product) =>{
+    return {type: LOAD_ONE_PRODUCT, product}
 }
 
 const addProduct = (newProduct) => {
@@ -26,6 +31,15 @@ export const getProducts = () => async(dispatch) => {
         const products = await response.json();
         dispatch(loadProducts(products.all_products));
         return products;
+    }
+}
+
+export const getOneProduct = (id) => async(dispatch) => {
+    const response = await fetch(`/api/products/${id}`);
+
+    if(response.ok) {
+        const product = await response.json();
+        dispatch(loadOneProduct(product))
     }
 }
 

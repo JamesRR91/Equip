@@ -25,6 +25,7 @@ export default function GetProducts() {
             {products?.map(({id, product_name, product_description, product_price, product_quantity, user_id}) => (
                 <div className='product-container' key={id}>
                     <ul className='product-list'>
+                        <li className='created-by'>{user_id}</li>
                         <li className='product-name'>{product_name}</li>
                         <li className='product-desc'>Description: {product_description}</li>
                         <li className='product-price'>${product_price}</li>

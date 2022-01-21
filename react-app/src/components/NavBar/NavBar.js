@@ -13,14 +13,22 @@ const NavBar = ({loaded}) => {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <li>
+      <div className='session-row'>
+        <ul>
+        <li>
             <div id="profileButton">
                 <ProfileButton user={sessionUser}/>
             </div>
-            <div className='post-product-button'>
+            </li>
+            <li className='create-product'>
+            <NavLink className="home-nav" to='/create_product' exact={true} activeClassName='active'>
+              Add A Product
+            </NavLink>
+            </li>
+        </ul>
             </div>
-          </li>
     );
+
   } else {
     sessionLinks = (
       <>
