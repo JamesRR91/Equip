@@ -8,8 +8,6 @@ export default function GetProducts() {
     const dispatch=useDispatch();
     const productsObj = useSelector((state) => state.product.inventory);
     const products = Object.values(productsObj);
-    console.log('ALLLL THE OBJECTS', products)
-    console.log('JUST ONE PLEASE', products[0]);
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch]);

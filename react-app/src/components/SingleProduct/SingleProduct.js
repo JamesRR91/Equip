@@ -11,7 +11,13 @@ const { id } = useParams()
 
 const thisProductObj= useSelector((state) => state.product.inventory);
 const thisProduct = Object.values(thisProductObj);
-const thisProductId= thisProduct[id]
+const thisProductId= thisProduct[id];
+const optionalChain=thisProduct?.[id]
+const thisProductIdArray=Object.assign([], thisProductId)
+console.log('You are wrong are you not?', thisProductObj);
+console.log('Maybe this?', thisProduct)
+console.log('IS THIS THE SAME', thisProductId)
+console.log('TRY THIS', optionalChain)
 
 useEffect(() => {
     dispatch(getOneProduct(id))
