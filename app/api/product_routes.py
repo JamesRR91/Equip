@@ -58,3 +58,14 @@ def delete_product(id):
     db.session.commit()
 
     return product.to_dict()
+
+@product_route.route('/<int:id'>, methods=['PUT'])
+@login_required
+def edit_product(id):
+    product=Product.query.get(id)
+    product.product_name=request.json['product_name']
+    product.product_description=request.json['product_description']
+    product.product_price=request.json['product_price']
+    product.product_quantity=request.json['product_quantity']
+    db.session.commit()
+    return product.to_dict()

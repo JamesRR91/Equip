@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { getProducts } from '../../store/products';
 import { getOneProduct } from '../../store/products';
+import DeleteProduct from '../DeleteProduct/DeleteProduct';
 
 export default function SingleProduct(){
 const dispatch = useDispatch()
@@ -12,11 +13,23 @@ const { id } = useParams()
 const thisProductObj= useSelector((state) => state.product.inventory);
 const thisProduct = Object.values(thisProductObj);
 const thisProductId= thisProduct[id-1];
+const sessionUserCheck=useSelector((state) => state.session.user);
 const thisProductIdArray=Object.assign([], thisProductId)
-console.log ('THIS IS THE ID', id)
-console.log('You are wrong are you not?', thisProductObj);
-console.log('Maybe this?', thisProduct)
-console.log('OR THIS', thisProductId)
+console.log('USER', sessionUserCheck.id)
+let sessionLinks;
+if(sessionUserCheck.id===thisProductId.user_id) {
+    sessionLinks = (
+        <div className='session-row'>
+        <ul>
+        <li>
+            <div className='delete-button'>
+                <DeleteProduct id={id} />
+            </div>
+        </li>
+        </ul>
+        </div>
+    )
+}
 
 useEffect(() => {
     dispatch(getOneProduct(id))
@@ -29,6 +42,7 @@ return (
         <p className='single-product-price'>{thisProductId.product_price}</p>
         <p className='single-product-desc'>{thisProductId.product_description}</p>
         <p className='single-product-quan'>{thisProductId.product_quantity}</p>
+        {sessionUserCheck.id===thisProductId.user_id && sessionLinks}
         </div>
     </div>
 )
