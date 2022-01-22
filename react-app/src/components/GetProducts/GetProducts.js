@@ -31,7 +31,6 @@ export default function GetProducts() {
                 <NavLink className='text-deco' to={`products/${id}`}>
                 <h3 className='product-name'>{product_name}</h3>
                     <ul className='product-list'>
-                        <li className='created-by'>Created BY:{sessionUser.user_id}</li>
                         <li className='product-desc'>Description: {product_description}</li>
                         <li className='product-price'>${product_price}</li>
                         <li className='product-quantity'>Left in Stock!: {product_quantity}</li>
