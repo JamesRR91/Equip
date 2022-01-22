@@ -6,8 +6,11 @@ import './GetProducts.css';
 
 export default function GetProducts() {
     const dispatch=useDispatch();
+    const sessionUser= useSelector((state) => state.session.user)
     const productsObj = useSelector((state) => state.product.inventory);
     const products = Object.values(productsObj);
+
+    console.log('THIS IS PRODUCTS', products)
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch]);
@@ -26,9 +29,9 @@ export default function GetProducts() {
             {products?.map(({id, product_name, product_description, product_price, product_quantity, user_id}) => (
                 <div className='product-container' key={id}>
                 <NavLink className='text-deco' to={`products/${id}`}>
+                <h3 className='product-name'>{product_name}</h3>
                     <ul className='product-list'>
-                        <li className='created-by'>{user_id}</li>
-                        <li className='product-name'>{product_name}</li>
+                        <li className='created-by'>Created BY:{sessionUser.user_id}</li>
                         <li className='product-desc'>Description: {product_description}</li>
                         <li className='product-price'>${product_price}</li>
                         <li className='product-quantity'>Left in Stock!: {product_quantity}</li>

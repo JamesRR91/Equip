@@ -10,6 +10,7 @@ class Product(db.Model):
     product_quantity=db.Column(db.Integer, nullable=False)
     user_id=db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     user=db.relationship('User', back_populates='products')
+    review=db.relationship('Review', back_populates='product', cascade='all, delete')
 
     def to_dict(self):
         return {

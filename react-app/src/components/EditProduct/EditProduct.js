@@ -1,52 +1,34 @@
-import { React, useEffect, useState } from 'react';
+import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { makeProduct } from '../../store/products';
-import { NavLink, Redirect } from 'react-router-dom';
+import { changeProduct } from '../../store/products';
 import { useHistory } from 'react-router-dom';
-import './PostProduct.css';
+import './EditProduct.css';
 
-export default function PostProduct(){
+export default function EditProduct({id}) {
     const dispatch=useDispatch();
-    const history=useHistory();
-    const [product_name, setName]= useState("");
-    const [product_description, setDescription]= useState("");
-    const [product_price, setPrice]= useState(null);
-    const [product_quantity, setQuantity]= useState(null);
-    const [open, setOpen]=useState(false);
 
-    const handleClick= () => {
-        if(open===false) {
-            setOpen(true)
-        } else {
-            setOpen(false)
-        }
-    }
+    const product=useSelector((state) => state.product.inventory[id])
 
-    const resetProduct = () => {
-        setName("");
-        setDescription("");
-        setPrice(null);
-        setQuantity(null);
-    }
+    const [product_name, setName]=useState(product.product_name)
+    const [product_description, setDescription]=useState(product.product_description)
+    const [product_price, setPrice]=useState(product.product_price)
+    const [product_quantity, setQuantity]=useState(product.product_quantity)
 
-    const handleSubmit = async (e) => {
+    const handleSubmit=(e) => {
         e.preventDefault();
-        const newProduct = {
+        const data={
+            ...product,
             product_name,
             product_description,
             product_price,
             product_quantity
-        };
-        dispatch(makeProduct(newProduct));
-        console.log('WHATS THE NEW PRODUCT', newProduct);
-        history.push('/');
+        }
+
+        dispatch(changeProduct(data))
     }
 
-
-
     return (
-        <div className='post-product-parent'>
-        <div className='post-product'>
+        <div className='edit-product-form-container'>
             <form className='product-data' onSubmit={handleSubmit}>
                 <label>Product Name: </label>
                 <input className='product-data'
@@ -79,13 +61,8 @@ export default function PostProduct(){
                 placeholder='How many do you have available for sale?'
                 required
                 />
-                <button className='submit-button' type='submit'>Create</button>
+                <button className='submit-button' type='submit'>Edit Product</button>
             </form>
         </div>
-        </div>
     )
-
-
-
-
 }

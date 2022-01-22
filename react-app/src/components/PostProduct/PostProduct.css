@@ -1,0 +1,35 @@
+.post-product-parent {
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 50px;
+    transition:0.3s;
+    width: 50rem;
+    height: 70rem;
+    margin-top: 40px;
+    padding-top: 10px;
+}
+
+.post-product {
+    width: 100%;
+    height: 90%;
+    border-radius: 2px;
+    border-style: groove;
+    background: silver;
+}
+
+.product-data {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin:auto;
+    height:auto;
+    width: auto;
+    text-align: center;
+    justify-content: center;
+}

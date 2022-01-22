@@ -49,6 +49,7 @@ export const makeProduct = (newProduct) => async(dispatch) => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(newProduct)
     });
+    console.log('FROM THE STORE', newProduct);
     const product = await response.json();
 
     if(response.ok) {
@@ -68,13 +69,13 @@ export const deleteProduct = (product_id) => async(dispatch) => {
     }
 }
 
-export const changeProduct = (product) => async(dispatch) => {
-    const response = await fetch(`/api/products/${product.id}`, {
+export const changeProduct = (data) => async(dispatch) => {
+    const response = await fetch(`/api/products/${data.id}/edit`, {
         method: 'put',
         headers: {
             'Content-Type' : 'application/json'
         },
-        body: JSON.stringify(product)
+        body: JSON.stringify(data)
     });
 
     if(response.ok) {
