@@ -11,6 +11,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import { authenticate } from './store/session';
 import PostProduct from './components/PostProduct/PostProduct';
 import SingleProduct from './components/SingleProduct/SingleProduct';
+import EditProduct from './components/EditProduct/EditProduct';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,6 +55,9 @@ function App() {
         </Route>
         <Route exact path='/products/:id' >
         <SingleProduct />
+        </Route>
+        <Route exact path='/products/:id/edit'>
+        <EditProduct />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -22,11 +22,18 @@
     .SplashBox1 {
         margin-left: 100px;
         margin-right: 100px;
-        height: 20vw;
-        width: 100vw;
+        height: 10rem;
+        width: 60rem;
         border-radius: 20px;
         position:absolute;
-        background-color: #943522;
+        background-color: #5BA67B;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    padding: 0 1em;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 
 }
 .image{
@@ -37,11 +44,6 @@
     border-radius: 50%;
 }
 .SplashBox2{
-    height: 100%;
-    margin-top: 100px;
-    margin-left: 100px;
-    margin-right: 100px;
-    border-radius: 20px;
 
 
 }

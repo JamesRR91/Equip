@@ -59,7 +59,7 @@ def delete_product(id):
 
     return product.to_dict()
 
-@product_route.route('/<int:id'>, methods=['PUT'])
+@product_routes.route('/<int:id>/edit', methods=['PUT'])
 @login_required
 def edit_product(id):
     product=Product.query.get(id)
