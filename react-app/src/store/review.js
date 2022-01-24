@@ -42,4 +42,76 @@ export const getOneReview = (id) => async (dispatch) => {
     }
 }
 
-export const 
+export const makeReview = (newReview) => async(dispatch) => {
+    const response = await fetch('/api/reviews/new', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(newReview)
+    })
+
+    const review = await response.json();
+
+    if (response.ok) {
+        dispatch(addReview(review));
+        return review;
+    }
+}
+
+export const deleteReview = (id) => async(dispatch) => {
+    const response = await fetch (`api/reviews/${id}`, {
+        method: 'delete'
+    })
+
+    if (response.ok) {
+        const review = await response.json();
+        dispatch(removeReview(review.id))
+    }
+}
+
+export const changeProduct = (data) => async(dispatch) => {
+    const response = await fetch( `/api/reviews/${data.id}/edit`, {
+        method: 'put',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+
+    if(response.ok) {
+        const data = await response.json();
+        dispatch(updateReview(data));
+        return data;
+    }
+}
+
+const initialState = { entries: {} };
+
+const reviewReducer = (state = initialState, action) => {
+    switch(action.type) {
+        case LOAD_REVIEWS: {
+            const newState= {...state, entries: {} };
+            for (let i = 0; i< action.reviews.length; i++) {
+                let review = action.reviews[i];
+                newState.entries[review.id]=review;
+            }
+            return newState;
+        };
+        case ADD_REVIEW: {
+            const newState = { ...state, entries: { ...state.entries, [action.newReview.id]: action.newReview } };
+            return newState;
+        };
+        case REMOVE_REVIEW: {
+            const newState = { ...state, entries: {...state.entries } };
+            delete newState.entries[action.id];
+            return newState;
+        };
+        case UPDATE_REVIEW: {
+            const newState= { ...state, entries: {...state.entries, [action.review.id]: action.review } };
+            return newState;
+        };
+        default:
+            return state;
+    }
+};
+
+export default reviewReducer;
