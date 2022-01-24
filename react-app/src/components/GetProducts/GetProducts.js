@@ -10,7 +10,6 @@ export default function GetProducts() {
     const productsObj = useSelector((state) => state.product.inventory);
     const products = Object.values(productsObj);
 
-    console.log('THIS IS PRODUCTS', products)
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch]);

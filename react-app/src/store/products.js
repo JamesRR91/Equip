@@ -115,3 +115,26 @@ const productReducer = (state = initialState, action) => {
 };
 
 export default productReducer;
+
+// const dispatch = useDispatch();
+//     const reviewsObj = useSelector((state) => state.review.entries);
+//     const reviews = Object.values(reviewsObj);
+//     const { id }= useParams();
+//     const filteredReviews=reviews.filter(review => review.product_id===id)
+//     useEffect(() => {
+//         dispatch(GetReviews());
+//     }, [dispatch]);
+
+
+//     return (
+//         <div className="get-reviews-parent">
+//             {filteredReviews?.length ? filteredReviews?.map(({ id, review_text, user_id, product_id}) => (
+//               <div className='review' key={id}>
+//                 <div className='review-text'>
+//                   {review_text}
+//                 </div>
+//             )): <div className='no-review-parent'><h3 className='no-review'>This product has no reviews, be the first!</h3></div>}
+
+//         </div>
+//     )
+//             }

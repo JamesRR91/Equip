@@ -7,13 +7,12 @@ import DeleteProduct from '../DeleteProduct/DeleteProduct';
 import EditProduct from '../EditProduct/EditProduct';
 import { NavLink } from 'react-router-dom';
 import './SingleProduct.css';
+import GetReviews from '../GetReviews/GetReviews';
 
 export default function SingleProduct(){
 const dispatch = useDispatch()
 const history = useHistory()
 const { id } = useParams()
-
-console.log('THE ID', id);
 
 const thisProductObj= useSelector((state) => state.product.inventory);
 const thisProductObjId=thisProductObj[id];
@@ -53,6 +52,7 @@ return (
         {sessionUserCheck?.id===thisProductObjId?.user_id && sessionLinks}
         </div>
     </div>
+    <GetReviews id={id}/>
     </div>
 )
 }
