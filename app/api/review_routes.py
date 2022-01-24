@@ -8,8 +8,10 @@ review_routes= Blueprint("reviews", __name__)
 
 @review_routes.route("/", methods=['Get'])
 
-def get_all_reviews():
-    all_reviews= Review.query.filter(Review.product_id == Product.id)
+@review_routes.route("/<int:product_id>", methods=['Get'])
+
+def get_products_reviews(product_id):
+    all_reviews= Review.query.filter(Review.product_id == product_id)
     return {'all_reviews':[review.to_dict() for review in all_reviews]}
 
 # fetch('/api/reviews/', {method:'Get'}).then(res => res.json()).then(data=>console.log(data))

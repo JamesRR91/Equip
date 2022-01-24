@@ -7,21 +7,18 @@ import DeleteProduct from '../DeleteProduct/DeleteProduct';
 import EditProduct from '../EditProduct/EditProduct';
 import { NavLink } from 'react-router-dom';
 import './SingleProduct.css';
+import GetReviews from '../GetReviews/GetReviews';
+import PostReview from '../PostReviewModal/PostReview';
 
 export default function SingleProduct(){
 const dispatch = useDispatch()
 const history = useHistory()
 const { id } = useParams()
 
-console.log('THE ID', id);
-
 const thisProductObj= useSelector((state) => state.product.inventory);
 const thisProductObjId=thisProductObj[id];
 const thisProduct = Object.values(thisProductObj);
-const thisProductId= thisProduct[id];
-const filterProduct= thisProduct.filter(product => product.id===id)
 const sessionUserCheck=useSelector((state) => state.session.user);
-const thisProductIdArray=Object.assign([], thisProductId)
 let sessionLinks;
 if(sessionUserCheck?.id===thisProductObjId?.user_id) {
     sessionLinks = (
@@ -44,6 +41,9 @@ useEffect(() => {
 
 return (
     <div className='single-parent'>
+    <div className='post-review'>
+    <PostReview id={id}/>
+    </div>
     <div className='single-product-container'>
         <div className='single-product-content'>
         <h1>{thisProductObjId?.product_name}</h1>
@@ -53,6 +53,7 @@ return (
         {sessionUserCheck?.id===thisProductObjId?.user_id && sessionLinks}
         </div>
     </div>
+    <GetReviews id={id}/>
     </div>
 )
 }
