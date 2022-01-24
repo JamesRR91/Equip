@@ -12,6 +12,7 @@ import { authenticate } from './store/session';
 import PostProduct from './components/PostProduct/PostProduct';
 import SingleProduct from './components/SingleProduct/SingleProduct';
 import EditProduct from './components/EditProduct/EditProduct';
+import PostReview from './components/PostReview/PostReview';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +59,9 @@ function App() {
         </Route>
         <Route exact path='/products/:id/edit'>
         <EditProduct />
+        </Route>
+        <Route exact path='/reviews/new'>
+        <PostReview />
         </Route>
       </Switch>
     </BrowserRouter>

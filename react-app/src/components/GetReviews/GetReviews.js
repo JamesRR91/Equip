@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import reviewReducer, { getAllReviews } from '../../store/review';
 import { NavLink, useParams } from 'react-router-dom';
 import { getProducts } from '../../store/products';
+import PostReview from '../PostReviewModal/PostReview';
 import './GetReviews.css';
 
 export default function GetReviews({id}){
