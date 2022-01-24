@@ -17,10 +17,7 @@ const { id } = useParams()
 const thisProductObj= useSelector((state) => state.product.inventory);
 const thisProductObjId=thisProductObj[id];
 const thisProduct = Object.values(thisProductObj);
-const thisProductId= thisProduct[id];
-const filterProduct= thisProduct.filter(product => product.id===id)
 const sessionUserCheck=useSelector((state) => state.session.user);
-const thisProductIdArray=Object.assign([], thisProductId)
 let sessionLinks;
 if(sessionUserCheck?.id===thisProductObjId?.user_id) {
     sessionLinks = (

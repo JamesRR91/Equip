@@ -5,19 +5,14 @@ import { NavLink, useParams } from 'react-router-dom';
 import { getProducts } from '../../store/products';
 import './GetReviews.css';
 
-export default function GetReviews(){
+export default function GetReviews({id}){
     const dispatch= useDispatch();
-    const { id }=useParams();
     const reviewsObj = useSelector((state) => state.review.entries);
     const reviews = Object.values(reviewsObj);
     const filteredReviews=reviews.filter(review => review.product_id===id)
     useEffect(() => {
-      dispatch(getAllReviews());
+      dispatch(getAllReviews(id));
   }, [dispatch]);
-  console.log('THEID', id);
-  console.log('THEOBJ', reviewsObj);
-  console.log('THEVALS', reviews);
-  console.log('THEFIL', filteredReviews);
     return(
         <div className="get-reviews-parent">
             {reviews?.length ? reviews.map(({ id, review_text, user_id, product_id}) => (

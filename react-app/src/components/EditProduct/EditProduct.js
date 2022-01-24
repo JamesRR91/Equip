@@ -9,10 +9,10 @@ export default function EditProduct({id}) {
 
     const product=useSelector((state) => state.product.inventory[id])
 
-    const [product_name, setName]=useState(product.product_name)
-    const [product_description, setDescription]=useState(product.product_description)
-    const [product_price, setPrice]=useState(product.product_price)
-    const [product_quantity, setQuantity]=useState(product.product_quantity)
+    const [product_name, setName]=useState(product?.product_name)
+    const [product_description, setDescription]=useState(product?.product_description)
+    const [product_price, setPrice]=useState(product?.product_price)
+    const [product_quantity, setQuantity]=useState(product?.product_quantity)
 
     const handleSubmit=(e) => {
         e.preventDefault();

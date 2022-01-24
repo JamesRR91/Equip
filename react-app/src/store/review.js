@@ -23,8 +23,8 @@ const updateReview = (id) => {
     return { type: UPDATE_REVIEW, id};
 };
 
-export const getAllReviews = () => async (dispatch) => {
-    const response = await fetch('/api/reviews/');
+export const getAllReviews = (product_id) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${product_id}`);
 
     if (response.ok) {
         const reviews = await response.json();
