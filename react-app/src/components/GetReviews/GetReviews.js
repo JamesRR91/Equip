@@ -15,23 +15,23 @@ export default function GetReviews({id}){
     const reviews = Object.values(reviewsObj);
     const filteredReviews=reviews.filter(review => review.product_id===id)
 
-    console.log('TEST1', reviewsObj[id])
-    console.log('TEST2', thisReview.id)
+//     let sessionLinks;
+// if(sessionUserCheck?.id===thisReview?.user_id) {
+//     sessionLinks = (
+//         <div className='session-row'>
+//         <ul>
+//         <li>
+//             <div className='delete-button'>
+//                 <EditReviewModal id={thisReview?.id} />
+//             </div>
+//         </li>
+//         </ul>
+//         </div>
+//     )
+// }
 
-    let sessionLinks;
-if(sessionUserCheck?.id===thisReview?.user_id) {
-    sessionLinks = (
-        <div className='session-row'>
-        <ul>
-        <li>
-            <div className='delete-button'>
-                <EditReviewModal id={thisReview?.id} />
-            </div>
-        </li>
-        </ul>
-        </div>
-    )
-}
+// For below product_id if i can get it to work again
+// {sessionUserCheck?.id===thisReview?.user_id && sessionLinks}
 
     useEffect(() => {
       dispatch(getAllReviews(id));
@@ -47,7 +47,7 @@ if(sessionUserCheck?.id===thisReview?.user_id) {
                  {user_id}
                 </div>
                   {product_id}
-                  {sessionUserCheck?.id===thisReview?.user_id && sessionLinks}
+                  {sessionUserCheck?.id===user_id ? <div className='modals'> <EditReviewModal id={id} /> </div>: null}
               </div>
             )): <div className='no-review-parent'><h3 className='no-review'>This product has no review, be the first!</h3></div>}
 
