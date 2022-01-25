@@ -44,7 +44,7 @@ useEffect(() => {
 
 return (
     <div className='single-parent'>
-    <PostReviewModal id={id}/>
+    {sessionUserCheck? <PostReviewModal id={id}/>: null}
     <div className='single-product-container'>
         <div className='single-product-content'>
         <h1>{thisProductObjId?.product_name}</h1>
