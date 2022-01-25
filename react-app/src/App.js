@@ -11,7 +11,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import { authenticate } from './store/session';
 import PostProduct from './components/PostProduct/PostProduct';
 import SingleProduct from './components/SingleProduct/SingleProduct';
-import EditProduct from './components/EditProduct/EditProduct';
+import EditProduct from './components/EditProductModal/EditProduct';
 
 function App() {
   const [loaded, setLoaded] = useState(false);

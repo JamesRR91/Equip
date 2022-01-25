@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeProduct } from '../../store/products';
 import { useHistory } from 'react-router-dom';
-import './EditProduct.css';
+
 
 export default function EditProduct({id}) {
     const dispatch=useDispatch();
