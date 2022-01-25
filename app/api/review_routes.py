@@ -50,7 +50,7 @@ def delete_review(id):
 
 # fetch('/api/reviews/4', {method: 'delete'}).then(res => res.json()).then(data => console.log(data));
 
-@review_routes.route('/<int:id>', methods=['PUT'])
+@review_routes.route('/<int:id>/edit', methods=['PUT'])
 @login_required
 def edit_review(id):
     review=Review.query.get(id)

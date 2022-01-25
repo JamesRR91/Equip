@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { getProducts } from '../../store/products';
 import { getOneProduct } from '../../store/products';
-import DeleteProduct from '../DeleteProduct/DeleteProduct';
-import EditProduct from '../EditProduct/EditProduct';
+import DeleteProduct from '../DeleteProductModal/DeleteProduct';
+import DeleteProductModal from '../DeleteProductModal';
+import EditProduct from '../EditProductModal/EditProduct';
+import EditProductModal from '../EditProductModal';
 import { NavLink } from 'react-router-dom';
 import './SingleProduct.css';
 import GetReviews from '../GetReviews/GetReviews';
 import PostReview from '../PostReviewModal/PostReview';
+import PostReviewModal from '../PostReviewModal';
 
 export default function SingleProduct(){
 const dispatch = useDispatch()
@@ -26,8 +29,8 @@ if(sessionUserCheck?.id===thisProductObjId?.user_id) {
         <ul>
         <li>
             <div className='delete-button'>
-                <DeleteProduct id={id} />
-                <EditProduct id={id} />
+                <DeleteProductModal id={id} />
+                <EditProductModal id={id} />
             </div>
         </li>
         </ul>
@@ -41,9 +44,7 @@ useEffect(() => {
 
 return (
     <div className='single-parent'>
-    <div className='post-review'>
-    <PostReview id={id}/>
-    </div>
+    <PostReviewModal id={id}/>
     <div className='single-product-container'>
         <div className='single-product-content'>
         <h1>{thisProductObjId?.product_name}</h1>

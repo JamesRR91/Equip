@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import PostReview from './PostReview';
+import EditProduct from './EditProduct';
 
 
-function PostReviewModal({id}) {
+function EditProductModal({id}) {
   const [showModal, setShowModal] = useState(false);
 
   function handleClick() {
       setShowModal(!showModal)
   }
-  console.log('IS IT HAPPENING', showModal)
+
   return (
         <div>
-          <button className='modal-button-review' onClick={handleClick}>Review This Product</button>
+          <button className='modal-button-review' onClick={handleClick}>Edit Your Product?</button>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-              <PostReview id={id} setShowModal={setShowModal}/>
+              <EditProduct id={id} setShowModal={setShowModal}/>
             </Modal>
           )}
         </div>
@@ -23,4 +23,4 @@ function PostReviewModal({id}) {
   );
 }
 
-export default PostReviewModal;
+export default EditProductModal;

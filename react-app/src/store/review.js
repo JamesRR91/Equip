@@ -19,8 +19,8 @@ const removeReview = (id) => {
     return { type: REMOVE_REVIEW, id };
 };
 
-const updateReview = (id) => {
-    return { type: UPDATE_REVIEW, id};
+const updateReview = (review) => {
+    return { type: UPDATE_REVIEW, review};
 };
 
 export const getAllReviews = (product_id) => async (dispatch) => {
@@ -68,7 +68,7 @@ export const deleteReview = (id) => async(dispatch) => {
     }
 }
 
-export const changeProduct = (data) => async(dispatch) => {
+export const changeReview = (data) => async(dispatch) => {
     const response = await fetch( `/api/reviews/${data.id}/edit`, {
         method: 'put',
         headers: {
@@ -76,6 +76,9 @@ export const changeProduct = (data) => async(dispatch) => {
         },
         body: JSON.stringify(data)
     });
+    console.log('RESPONSE', response);
+    console.log('DATA', data);
+    console.log('ID', data.id);
 
     if(response.ok) {
         const data = await response.json();
@@ -106,7 +109,9 @@ const reviewReducer = (state = initialState, action) => {
             return newState;
         };
         case UPDATE_REVIEW: {
+            console.log('ACTION', action)
             const newState= { ...state, entries: {...state.entries, [action.review.id]: action.review } };
+            console.log('NEWSTATE', newState);
             return newState;
         };
         default:

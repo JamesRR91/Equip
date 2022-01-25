@@ -13,11 +13,6 @@ export default function PostReview({id, setShowModal}){
     const products = Object.values(productsObj);
     const specificProduct=products.find(product => product.id===id)
 
-    console.log('THEID', id);
-    console.log('THEUSER',sessionUser.id);
-    console.log('ThePROD', products);
-    console.log('SPECIFIC', specificProduct);
-
     const handleSubmit = async(e) => {
         e.preventDefault();
         const newReview= {

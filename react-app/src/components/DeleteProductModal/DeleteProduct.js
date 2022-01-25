@@ -2,9 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { deleteProduct } from '../../store/products';
-import './DeleteProduct.css';
 
-export default function DeleteProduct({ id }){
+export default function DeleteProduct({ id, setShowModal }){
     const dispatch=useDispatch()
     const history=useHistory()
 
@@ -15,8 +14,11 @@ export default function DeleteProduct({ id }){
     }
 
     return (
-        <button className='delete-button' onClick={handleSubmit}>
-        Delete
-        </button>
+        <div className="review-detail-single">
+        <h3 className="modal-content-delete">Are you sure?</h3>
+        <div className='button-row-delete'>
+        <button className="modal-button" onClick={handleSubmit}>Yes, Delete My Product</button>
+        </div>
+    </div>
     )
 }
