@@ -48,9 +48,9 @@ return (
     <div className='single-product-container'>
         <div className='single-product-content'>
         <h1>{thisProductObjId?.product_name}</h1>
-        <p className='single-product-price'>{thisProductObjId?.product_price}</p>
-        <p className='single-product-desc'>{thisProductObjId?.product_description}</p>
-        <p className='single-product-quan'>{thisProductObjId?.product_quantity}</p>
+        <p className='single-product-price'>Price: ${thisProductObjId?.product_price}</p>
+        <p className='single-product-quan'>In Stock: {thisProductObjId?.product_quantity}</p>
+        <p className='single-product-desc'>Description: {thisProductObjId?.product_description}</p>
         {sessionUserCheck?.id===thisProductObjId?.user_id && sessionLinks}
         </div>
     </div>
