@@ -7,12 +7,14 @@ export default function EditReview({id}) {
     const dispatch=useDispatch();
 
     const reviewsObj = useSelector((state) => state.review.entries);
-    const thisReview=reviewsObj[id];
+    const reviews=Object.values(reviewsObj);
+    const thisReview=reviews.find(review => review.id === id);
     const review=useSelector((state) =>state.review.entries[id])
 
     const [review_text, setReview]=useState(review?.review_text)
     console.log('THEID', id);
     console.log('THEREV', review);
+    console.log('REVIEWS', reviews)
     console.log('OBJ', reviewsObj);
     console.log('THIS', thisReview)
 

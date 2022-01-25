@@ -15,6 +15,9 @@ export default function GetReviews({id}){
     const reviews = Object.values(reviewsObj);
     const filteredReviews=reviews.filter(review => review.product_id===id)
 
+    console.log('TEST1', reviewsObj[id])
+    console.log('TEST2', thisReview.id)
+
     let sessionLinks;
 if(sessionUserCheck?.id===thisReview?.user_id) {
     sessionLinks = (
@@ -22,7 +25,7 @@ if(sessionUserCheck?.id===thisReview?.user_id) {
         <ul>
         <li>
             <div className='delete-button'>
-                <EditReviewModal id={id} />
+                <EditReviewModal id={thisReview?.id} />
             </div>
         </li>
         </ul>

@@ -76,6 +76,8 @@ export const changeReview = (data) => async(dispatch) => {
         },
         body: JSON.stringify(data)
     });
+    console.log('RESPONSE', response);
+    console.log('DATA', data);
 
     if(response.ok) {
         const data = await response.json();
@@ -107,6 +109,7 @@ const reviewReducer = (state = initialState, action) => {
         };
         case UPDATE_REVIEW: {
             const newState= { ...state, entries: {...state.entries, [action.review.id]: action.review } };
+            console.log('NEWSTATE', newState);
             return newState;
         };
         default:
