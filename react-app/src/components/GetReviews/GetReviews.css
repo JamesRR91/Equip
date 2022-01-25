@@ -1,0 +1,17 @@
+.get-reviews-parent {
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 10px;
+    transition:0.3s;
+    background: silver;
+    width: 22rem;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5);
+    margin-top: 1rem;
+    overflow: scroll;
+}

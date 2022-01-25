@@ -34,10 +34,12 @@
 
 .get-products-parent ul {
     text-decoration: none;
+    list-style-type: none;
 
 }
 .get-products-parent li {
     text-decoration: none;
+    list-style-type: none;
 }
 
 .text-deco {
