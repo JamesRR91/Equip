@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { changeReview } from "../../store/review";
 import { useHistory, useParams } from "react-router-dom";
 
-export default function EditReview({id}) {
+export default function EditReview({id, setShowModal}) {
     const dispatch=useDispatch();
 
     const reviewsObj = useSelector((state) => state.review.entries);
@@ -24,7 +24,8 @@ export default function EditReview({id}) {
             ...review,
             review_text
         }
-        dispatch(changeReview(data))
+        dispatch(changeReview(data));
+        setShowModal(false);
     }
     return(
         <div className='edit-review-parent'>
