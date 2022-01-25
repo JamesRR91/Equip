@@ -9,6 +9,7 @@ import { NavLink } from 'react-router-dom';
 import './SingleProduct.css';
 import GetReviews from '../GetReviews/GetReviews';
 import PostReview from '../PostReviewModal/PostReview';
+import PostReviewModal from '../PostReviewModal';
 
 export default function SingleProduct(){
 const dispatch = useDispatch()
@@ -41,9 +42,7 @@ useEffect(() => {
 
 return (
     <div className='single-parent'>
-    <div className='post-review'>
-    <PostReview id={id}/>
-    </div>
+    <PostReviewModal id={id}/>
     <div className='single-product-container'>
         <div className='single-product-content'>
         <h1>{thisProductObjId?.product_name}</h1>
