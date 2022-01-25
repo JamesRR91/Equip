@@ -5,6 +5,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import { getProducts } from '../../store/products';
 import PostReview from '../PostReviewModal/PostReview';
 import EditReviewModal from '../EditReviewModal';
+import DeleteReviewModal from '../DeleteReviewModal';
 import './GetReviews.css';
 
 export default function GetReviews({id}){
@@ -47,7 +48,7 @@ export default function GetReviews({id}){
                  {user_id}
                 </div>
                   {product_id}
-                  {sessionUserCheck?.id===user_id ? <div className='modals'> <EditReviewModal id={id} /> </div>: null}
+                  {sessionUserCheck?.id===user_id ? <div className='modals'> <EditReviewModal id={id} /> <DeleteReviewModal id={id} /></div>: null}
               </div>
             )): <div className='no-review-parent'><h3 className='no-review'>This product has no review, be the first!</h3></div>}
 

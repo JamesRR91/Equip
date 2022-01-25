@@ -58,7 +58,7 @@ export const makeReview = (newReview) => async(dispatch) => {
 }
 
 export const deleteReview = (id) => async(dispatch) => {
-    const response = await fetch (`api/reviews/${id}`, {
+    const response = await fetch (`/api/reviews/${id}`, {
         method: 'delete'
     })
 
@@ -76,9 +76,6 @@ export const changeReview = (data) => async(dispatch) => {
         },
         body: JSON.stringify(data)
     });
-    console.log('RESPONSE', response);
-    console.log('DATA', data);
-    console.log('ID', data.id);
 
     if(response.ok) {
         const data = await response.json();
