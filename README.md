@@ -2,6 +2,8 @@
 
 This is the starter for the Flask React project.
 
+##Live Link
+https://equip-etsy-clone.herokuapp.com/
 ## Getting started
 
 1. Clone this repository (only this branch)
