@@ -68,7 +68,7 @@ export const deleteReview = (id) => async(dispatch) => {
     }
 }
 
-export const changeProduct = (data) => async(dispatch) => {
+export const changeReview = (data) => async(dispatch) => {
     const response = await fetch( `/api/reviews/${data.id}/edit`, {
         method: 'put',
         headers: {
