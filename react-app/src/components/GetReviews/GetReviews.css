@@ -1,7 +1,6 @@
 .get-reviews-parent {
     text-decoration: none;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
     align-items: center;
@@ -12,7 +11,11 @@
     background: #ECBA82;
     width: 22rem;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5);
-    margin-top: 1rem;
+    margin-top: 4rem;
     overflow: scroll;
     height: 25rem;
+}
+
+.review {
+    margin: .7rem;
 }

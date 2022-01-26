@@ -16,9 +16,9 @@
 .post-product {
     width: 20rem;
     height: 30rem;
-    border-radius: 2px;
-    border-style: groove;
+    border-radius: 2px solid black;
     background: #EBD5B3;
+
 }
 
 .product-data {
