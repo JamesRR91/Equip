@@ -15,17 +15,16 @@
 
 .profile-dropdown {
     position: absolute;
-    font-weight: bold;
-    padding: .75rem;
-    border-radius: .25rem;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
-    top: calc(100% +.25rem);
-    transition: 150ms ease-in-out;
     display: flex;
     flex-direction: column;
-    width: 10rem;
-    height: 2rem;
-    align-items: center;
-    justify-content: center;
-    color: black;
+    gap: 1vw;
+    width: 43%;
+    box-shadow: none;
+    background-color:#5BA67B;
+    top: 70px;
+    left: .3vw;
+    height: 50px!important;
+    overflow: hidden;
+    z-index: 10;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
