@@ -1,7 +1,6 @@
-import { React, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { React, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { makeProduct } from '../../store/products';
-import { NavLink, Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import './PostProduct.css';
 
@@ -12,22 +11,6 @@ export default function PostProduct(){
     const [product_description, setDescription]= useState("");
     const [product_price, setPrice]= useState(null);
     const [product_quantity, setQuantity]= useState(null);
-    const [open, setOpen]=useState(false);
-
-    const handleClick= () => {
-        if(open===false) {
-            setOpen(true)
-        } else {
-            setOpen(false)
-        }
-    }
-
-    const resetProduct = () => {
-        setName("");
-        setDescription("");
-        setPrice(null);
-        setQuantity(null);
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();

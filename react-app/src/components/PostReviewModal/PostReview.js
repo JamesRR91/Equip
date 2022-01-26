@@ -1,17 +1,11 @@
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeReview } from '../../store/review';
-import { NavLink, Redirect } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 
 export default function PostReview({id, setShowModal}){
     const dispatch=useDispatch();
-    const history=useHistory();
     const [review_text, setReview]=useState("");
     const sessionUser= useSelector(state => state.session.user);
-    const productsObj = useSelector((state) => state.product.inventory);
-    const products = Object.values(productsObj);
-    const specificProduct=products.find(product => product.id===id)
 
     const handleSubmit = async(e) => {
         e.preventDefault();
