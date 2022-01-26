@@ -44,11 +44,7 @@ export default function GetReviews({id}){
                 <div className='review_text'>
                   {review_text}
                 </div>
-                <div>
-                 {user_id}
-                </div>
-                  {product_id}
-                  {sessionUserCheck?.id===user_id ? <div className='modals'> <EditReviewModal id={id} /> <DeleteReviewModal id={id} /></div>: null}
+                  {sessionUserCheck?.id===user_id ? <div className='button-row-review'> <EditReviewModal id={id} /> <DeleteReviewModal id={id} /></div>: null}
               </div>
             )): <div className='no-review-parent'><h3 className='no-review'>This product has no review, be the first!</h3></div>}
 

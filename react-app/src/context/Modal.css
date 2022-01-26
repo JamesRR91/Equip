@@ -33,6 +33,11 @@
   font-size: 2rem;
   margin: 10%;
   padding:3%;
+  background: #ECBA82;
+  left: 50%;
+   top: 50%;
+   margin-left: -150px;
+   margin-top: -150px;
 }
 
 .modal-form {
@@ -87,11 +92,12 @@ label {
 }
 
 .modal-container {
-  width: 100%;
-  height: 90%;
+  padding-top: 30rem;
+  width: 12em;
+  height: 5em;
   border-radius: 2px;
   border-style: groove;
-  background: silver;
+  background: #ECBA82;
 }
 
 .modal-errors {
@@ -182,12 +188,9 @@ label {
 }
 
 .button-row-review {
-  display: block;
-  text-align: center;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin: 0;
+  position:relative;
+  display: flex;
+  justify-content: right
 }
 
 .review-detail-list-container {

@@ -28,19 +28,17 @@ export default function EditReview({id, setShowModal}) {
         setShowModal(false);
     }
     return(
-        <div className='edit-review-parent'>
-            <div className='edit-review'>
-                <form className='review-data' onSubmit={handleSubmit}>
+        <div className='edit-product-form-container'>
+                <form className='product-data' onSubmit={handleSubmit}>
                     <label>Your Review: </label>
-                    <textarea className='review-data'
+                    <textarea className='product-data'
                     onChange={(e) => setReview(e.target.value)}
                     value={review_text}
                     placeholder='Tell us more about it'
                     required
                     />
-                    <button className='submit-button' type='submit'>Edit</button>
+                    <button className='modal-button' type='submit'>Edit</button>
                 </form>
-            </div>
             </div>
     )
 }

@@ -53,7 +53,7 @@ function App() {
         <Route exact path="/create_product">
         <PostProduct />
         </Route>
-        <Route exact path='/products/:id' >
+        <Route path='/products/:id' >
         <SingleProduct />
         </Route>
         <Route exact path='/products/:id/edit'>

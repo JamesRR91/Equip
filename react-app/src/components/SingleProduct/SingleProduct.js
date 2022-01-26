@@ -18,10 +18,14 @@ const dispatch = useDispatch()
 const history = useHistory()
 const { id } = useParams()
 
+
 const thisProductObj= useSelector((state) => state.product.inventory);
 const thisProductObjId=thisProductObj[id];
 const thisProduct = Object.values(thisProductObj);
 const sessionUserCheck=useSelector((state) => state.session.user);
+console.log('PRODUCT', thisProduct);
+console.log('HISTORY', history);
+console.log('ID', id);
 let sessionLinks;
 if(sessionUserCheck?.id===thisProductObjId?.user_id) {
     sessionLinks = (
@@ -39,8 +43,8 @@ if(sessionUserCheck?.id===thisProductObjId?.user_id) {
 }
 
 useEffect(() => {
-    dispatch(getOneProduct(id))
-}, [dispatch, id])
+    dispatch(getProducts())
+}, [dispatch])
 
 return (
     <div className='single-parent'>
@@ -48,9 +52,9 @@ return (
     <div className='single-product-container'>
         <div className='single-product-content'>
         <h1>{thisProductObjId?.product_name}</h1>
-        <p className='single-product-price'>Price: ${thisProductObjId?.product_price}</p>
+        <p className='single-product-price'>${thisProductObjId?.product_price}</p>
+        <p className='single-product-desc'>{thisProductObjId?.product_description}</p>
         <p className='single-product-quan'>In Stock: {thisProductObjId?.product_quantity}</p>
-        <p className='single-product-desc'>Description: {thisProductObjId?.product_description}</p>
         {sessionUserCheck?.id===thisProductObjId?.user_id && sessionLinks}
         </div>
     </div>

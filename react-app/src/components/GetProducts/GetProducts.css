@@ -1,11 +1,12 @@
 .get-products-parent {
     text-decoration: none;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-gap: 10rem;
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
     align-items: center;
-    flex-direction: column;
     text-align: center;
     border-radius: 50px;
     transition:0.3s;
@@ -16,25 +17,29 @@
 }
 
 .product-container {
-    text-decoration: none;
+
     margin-top: .9rem;
     font-size: .9rem;
     padding: 2px 16px;
     justify-content: flex-start;
     align-items: flex-start;
-    display:flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: max-content 200px 1fr;
     align-content: flex-start;
     justify-content:center;
     align-items:flex-start;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5);
     background: #EBD5B3;
     width: 20rem;
+    height: 20rem;
+    max-width: 500px;
+    margin: auto;
 }
 
 .get-products-parent ul {
     text-decoration: none;
     list-style-type: none;
+    margin: 0;
 
 }
 .get-products-parent li {
@@ -52,4 +57,33 @@
     text-align: left;
     font-size:1.2rem;
     margin: 0 auto;
+}
+
+.product-name {
+    height: 90%;
+    width: 50;
+    border-bottom: black solid 2px;
+
+}
+
+.product-list {
+    text-align: left;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.product-price {
+    font-size: 2rem;
+    color: green;
+    text-align: center;
+}
+
+.product-desc {
+    margin-top: 1.6rem;
+    font-size: 0.9em;
+}
+
+.product-quantity {
+    margin-top: 1rem;
+    padding-top: 10%
 }

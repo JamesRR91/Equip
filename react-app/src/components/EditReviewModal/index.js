@@ -12,7 +12,7 @@ function EditReviewModal({id}) {
 
   return (
         <div>
-          <button className='modal-button-review' onClick={handleClick}>Edit Your Review?</button>
+          <button className='modal-button-review' onClick={handleClick}><i className='fas fa-edit'></i></button>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
               <EditReview id={id} setShowModal={setShowModal}/>

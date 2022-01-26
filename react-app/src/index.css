@@ -1,1 +1,79 @@
 /* TODO Add site wide styles */
+.parent {
+    display: flex;
+    flex-direction: column;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+  body {
+    background-image: url(https://www.dndspeak.com/wp-content/uploads/2021/04/Shop-1.jpg);
+    background-size: cover;
+    object-fit: cover;
+    padding: 30px 5px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .login-form-parent {
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 50px;
+    transition:0.3s;
+    margin-top: 3rem;
+    padding-top: 5rem;
+  }
+
+  .login-form {
+    width: 20rem;
+    height: 10rem;
+    border-radius: 2px;
+    border-style: groove;
+    background: #EBD5B3;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+
+  .signup-form{
+    width: 25rem;
+    height: 10rem;
+    border-radius: 2px;
+    border-style: groove;
+    background: #EBD5B3;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+
+  .login-data {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin:auto;
+    height:auto;
+    width: auto;
+    text-align: center;
+    justify-content: center;
+    padding-top: 15%;
+  }
+
+  .signup-data {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin:auto;
+    height:auto;
+    width: auto;
+    text-align: left;
+    justify-content: center;
+    padding-top: 5%;
+  }
