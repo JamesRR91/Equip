@@ -18,10 +18,14 @@ const dispatch = useDispatch()
 const history = useHistory()
 const { id } = useParams()
 
+
 const thisProductObj= useSelector((state) => state.product.inventory);
 const thisProductObjId=thisProductObj[id];
 const thisProduct = Object.values(thisProductObj);
 const sessionUserCheck=useSelector((state) => state.session.user);
+console.log('PRODUCT', thisProduct);
+console.log('HISTORY', history);
+console.log('ID', id);
 let sessionLinks;
 if(sessionUserCheck?.id===thisProductObjId?.user_id) {
     sessionLinks = (
@@ -39,8 +43,8 @@ if(sessionUserCheck?.id===thisProductObjId?.user_id) {
 }
 
 useEffect(() => {
-    dispatch(getOneProduct(id))
-}, [dispatch, id])
+    dispatch(getProducts())
+}, [dispatch])
 
 return (
     <div className='single-parent'>
