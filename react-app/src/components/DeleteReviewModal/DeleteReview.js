@@ -14,8 +14,8 @@ export default function DeleteReview({ id, setShowModal }){
     }
 
     return (
-        <div className="review-detail-single">
-        <h3 className="modal-content-delete">Are you sure?</h3>
+        <div className="edit-product-form-container">
+        <h3>Are you sure?</h3>
         <div className='button-row-delete'>
         <button className="modal-button" onClick={handleSubmit}>Yes, Delete My Review</button>
         </div>
