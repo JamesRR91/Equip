@@ -12,6 +12,7 @@
     margin-top: 40px;
     padding: 10px;
     width: 100%;
+    padding: 2em 3.5em!important;
 }
 
 .single-product-container {
@@ -27,7 +28,7 @@
     justify-content:center;
     align-items:flex-start;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5);
-    background: #EBD5B3
+    background: #EBD5B3;
 }
 
 .single-product-content {

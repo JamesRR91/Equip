@@ -1,6 +1,6 @@
 .nav-container {
     margin: 10px;
-    background-color: rgba(255, 255, 255, 0.849);
+    background-color:#333 !important;
     display: flex;
     flex-direction: row;
     height: 60px;
@@ -8,10 +8,14 @@
     top: 0px;
     left: 0px;
     box-shadow: 1px 1px 8px rgba(112, 111, 111, 0.356);
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     /* margin-left: 30px; */
-    z-index: 1;
+    z-index: 50 !important;
+    border-bottom: none;
+    position: relative !important;
+    padding: .5rem;
+    gap: 1rem;
 }
 
 .nav-container ul {
@@ -21,7 +25,21 @@
   align-items: center;
   text-align: center;
   list-style-type: none;
+  float: left;
+  color: #f2f2f2;
+  padding: 14px 16px;
+  font-size: 17px;
   width: 100%;
+  }
+
+  .nav-container li:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .nav-container li.active {
+    background-color: #04AA6D;
+    color: white;
   }
 
 .nav-container li {
@@ -48,7 +66,6 @@
   /* margin-left: 1100px; */
   margin-left: 1000px;
   text-decoration: none;
-  background-color: rgb(15, 89, 119);
   color: white;
   font-weight: bold;
   padding: 10px;
@@ -64,7 +81,6 @@
 }
 .signup{
   text-decoration: none;
-  background-color: rgb(15, 89, 119);
   color: white;
   font-weight: bold;
   padding: 10px;
@@ -81,15 +97,13 @@
 
 .home-nav{
   text-decoration: none;
-  background-color: rgb(15, 89, 119);
   color: white;
   font-weight: bold;
   padding: 10px;
   padding-top: 4px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 20px;
-  width: 70px;
   margin-top: 8px;
   margin-bottom: 5px;
   border-radius: 20px;
@@ -125,4 +139,7 @@
 
 .create-product {
   padding: 10px;
+}
+.dropdown {
+position: relative;
 }

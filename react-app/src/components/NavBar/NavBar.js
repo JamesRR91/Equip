@@ -15,15 +15,15 @@ const NavBar = ({loaded}) => {
     sessionLinks = (
       <div className='session-row'>
         <ul>
+        <li className='create-product'>
+        <NavLink className="home-nav" to='/create_product' exact={true} activeClassName='active'>
+        Add A Product
+        </NavLink>
+        </li>
         <li>
-            <div id="profileButton">
+            <div id="dropdown">
                 <ProfileButton user={sessionUser}/>
             </div>
-            </li>
-            <li className='create-product'>
-            <NavLink className="home-nav" to='/create_product' exact={true} activeClassName='active'>
-              Add A Product
-            </NavLink>
             </li>
         </ul>
             </div>
