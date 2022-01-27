@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { getProducts } from '../../store/products';
 import { NavLink } from 'react-router-dom';
@@ -6,22 +6,12 @@ import './GetProducts.css';
 
 export default function GetProducts() {
     const dispatch=useDispatch();
-    const sessionUser= useSelector((state) => state.session.user)
     const productsObj = useSelector((state) => state.product.inventory);
     const products = Object.values(productsObj);
 
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch]);
-
-    const [openId, setOpenId]=useState(null);
-    const handleClick= (id) => {
-      if (openId===id) {
-        setOpenId(null)
-      } else {
-        setOpenId(id)
-      }
-    }
 
     return(
         <div className='get-products-parent'>

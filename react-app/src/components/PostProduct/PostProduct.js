@@ -21,7 +21,6 @@ export default function PostProduct(){
             product_quantity
         };
         dispatch(makeProduct(newProduct));
-        console.log('WHATS THE NEW PRODUCT', newProduct);
         history.push('/');
     }
 

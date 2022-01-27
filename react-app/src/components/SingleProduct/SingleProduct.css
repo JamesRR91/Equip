@@ -56,3 +56,31 @@
     font-size: 2rem;
     color: green;
 }
+
+.session-row {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    margin: 10px;
+    text-align: center;
+    padding: 5px;
+  }
+
+  .session-row-list {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    text-align: center;
+    list-style-type: none;
+    float: left;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 100%;
+  }
+
+  .session-row-item {
+      gap: 7px;
+  }

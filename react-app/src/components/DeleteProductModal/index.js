@@ -12,7 +12,7 @@ function DeleteProductModal({id}) {
 
   return (
         <div>
-          <button className='modal-button-review' onClick={handleClick}>Delete Your Product?</button>
+          <button className='modal-button-review' onClick={handleClick}><i className='fas fa-eraser'></i></button>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
               <DeleteProduct id={id} setShowModal={setShowModal}/>

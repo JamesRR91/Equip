@@ -12,7 +12,7 @@ function EditProductModal({id}) {
 
   return (
         <div>
-          <button className='modal-button-review' onClick={handleClick}>Edit Your Product?</button>
+          <button className='modal-button-review' onClick={handleClick}><i className='fas fa-edit'></i></button>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
               <EditProduct id={id} setShowModal={setShowModal}/>

@@ -2,9 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import LogoutButton from '../auth/LogoutButton';
 import ProfileButton from './ProfileButton.js';
-import PostProduct from '../PostProduct/PostProduct';
 import "./NavBar.css"
 
 const NavBar = ({loaded}) => {
@@ -14,13 +12,13 @@ const NavBar = ({loaded}) => {
   if (sessionUser) {
     sessionLinks = (
       <div className='session-row'>
-        <ul>
-        <li className='create-product'>
+        <ul className='bar-list'>
+        <li className='nav-element'>
         <NavLink className="home-nav" to='/create_product' exact={true} activeClassName='active'>
         Add A Product
         </NavLink>
         </li>
-        <li>
+        <li className='nav-element'>
             <div id="dropdown">
                 <ProfileButton user={sessionUser}/>
             </div>
@@ -48,8 +46,8 @@ const NavBar = ({loaded}) => {
   return (
     <div className="nav-container">
       <nav>
-        <ul>
-          <li>
+        <ul className='nav-list'>
+          <li className='nav-element'>
             <NavLink className="home-nav" to='/' exact={true} activeClassName='active'>
               Equip
             </NavLink>

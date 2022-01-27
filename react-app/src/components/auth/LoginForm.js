@@ -44,10 +44,11 @@ const LoginForm = () => {
           <td><label htmlFor='email'>Email: </label></td>
           <td><input
           name='email'
-          type='text'
+          type='email'
           placeholder='Email'
           value={email}
           onChange={updateEmail}
+          required
         /></td>
       </tr>
       <tr>
@@ -58,6 +59,7 @@ const LoginForm = () => {
           placeholder='Password'
           value={password}
           onChange={updatePassword}
+          required
         /></td>
       </tr>
 

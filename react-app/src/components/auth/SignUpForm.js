@@ -19,6 +19,8 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    } else {
+      alert ('Passwords do not match.')
     }
   };
 
@@ -59,15 +61,17 @@ const SignUpForm = () => {
           name='username'
           onChange={updateUsername}
           value={username}
+          required
         ></input></td>
       </tr>
       <tr>
           <td><label>Email</label></td>
           <td><input
-          type='text'
+          type='email'
           name='email'
           onChange={updateEmail}
           value={email}
+          required
         ></input></td>
       </tr>
       <tr>
@@ -77,6 +81,7 @@ const SignUpForm = () => {
           name='password'
           onChange={updatePassword}
           value={password}
+          required
         ></input></td>
       </tr>
       <tr>

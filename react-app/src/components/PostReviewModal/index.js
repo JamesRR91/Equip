@@ -9,7 +9,6 @@ function PostReviewModal({id}) {
   function handleClick() {
       setShowModal(!showModal)
   }
-  console.log('IS IT HAPPENING', showModal)
   return (
         <div>
           <button className='modal-button-review' onClick={handleClick}>Review This Product</button>
