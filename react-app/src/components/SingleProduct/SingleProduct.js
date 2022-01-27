@@ -20,12 +20,10 @@ let sessionLinks;
 if(sessionUserCheck?.id===thisProductObjId?.user_id) {
     sessionLinks = (
         <div className='session-row'>
-        <ul>
-        <li>
-            <div className='delete-button'>
+        <ul className='session-row-list'>
+        <li className='session-row-item'>
                 <DeleteProductModal id={id} />
                 <EditProductModal id={id} />
-            </div>
         </li>
         </ul>
         </div>
