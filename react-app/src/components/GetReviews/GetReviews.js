@@ -1,9 +1,6 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import reviewReducer, { getAllReviews } from '../../store/review';
-import { NavLink, useParams } from 'react-router-dom';
-import { getProducts } from '../../store/products';
-import PostReview from '../PostReviewModal/PostReview';
+import { getAllReviews } from '../../store/review';
 import EditReviewModal from '../EditReviewModal';
 import DeleteReviewModal from '../DeleteReviewModal';
 import './GetReviews.css';
@@ -12,9 +9,7 @@ export default function GetReviews({id}){
     const dispatch= useDispatch();
     const sessionUserCheck=useSelector((state) => state.session.user);
     const reviewsObj = useSelector((state) => state.review.entries);
-    const thisReview=reviewsObj[id];
     const reviews = Object.values(reviewsObj);
-    const filteredReviews=reviews.filter(review => review.product_id===id)
 
 //     let sessionLinks;
 // if(sessionUserCheck?.id===thisReview?.user_id) {
@@ -36,7 +31,7 @@ export default function GetReviews({id}){
 
     useEffect(() => {
       dispatch(getAllReviews(id));
-  }, [dispatch]);
+  }, [dispatch], id);
     return(
         <div className="get-reviews-parent">
             {reviews?.length ? reviews.map(({ id, review_text, user_id, product_id}) => (

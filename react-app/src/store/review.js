@@ -106,9 +106,7 @@ const reviewReducer = (state = initialState, action) => {
             return newState;
         };
         case UPDATE_REVIEW: {
-            console.log('ACTION', action)
             const newState= { ...state, entries: {...state.entries, [action.review.id]: action.review } };
-            console.log('NEWSTATE', newState);
             return newState;
         };
         default:

@@ -1,12 +1,8 @@
 import React from 'react';
 import './index.css';
-import { useSelector } from 'react-redux';
 import GetProducts from '../GetProducts/GetProducts';
-import { getProducts } from '../../store/products';
-import PostProduct from '../PostProduct/PostProduct';
 
 export default function LandingPage() {
-    const sessionUser = useSelector((state) => state.session.user);
 
       return (
         <div>
