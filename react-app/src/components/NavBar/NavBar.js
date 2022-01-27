@@ -46,7 +46,13 @@ const NavBar = ({loaded}) => {
   return (
     <div className="nav-container">
       <nav>
-        <ul className='nav-list'>
+      <ul className='nav-list'>
+      <a href="https://linkedin.com/in/james-roberts-10a3ba111">
+      <i className='fab fa-linkedin-in'></i>
+      </a>
+      <a href="https://github.com/JamesRR91">
+      <i className='fab fa-github'></i>
+      </a>
           <li className='nav-element'>
             <NavLink className="home-nav" to='/' exact={true} activeClassName='active'>
               Equip

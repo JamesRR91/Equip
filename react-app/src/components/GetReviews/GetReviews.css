@@ -27,3 +27,9 @@
     gap: 8px;
     margin-top: 2px;
 }
+
+.review_text {
+    font-size: 16px;
+    text-overflow: wrap;
+    font-weight: 500;
+}
