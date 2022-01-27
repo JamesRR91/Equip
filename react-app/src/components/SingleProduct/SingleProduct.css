@@ -45,7 +45,7 @@
     border-radius: 50px;
     transition:0.3s;
     margin-top: .9rem;
-    font-size: .9rem;
+    font-size: 1rem;
     padding: 2px 16px;
 }
 
@@ -83,4 +83,12 @@
 
   .session-row-item {
       gap: 7px;
+  }
+
+  .single-product-desc {
+      font-weight: bold;
+  }
+
+  .single-product-quan {
+      font-weight: bold;
   }
