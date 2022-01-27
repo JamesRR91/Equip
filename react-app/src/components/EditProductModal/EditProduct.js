@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeProduct } from '../../store/products';
 
 
-export default function EditProduct({id}) {
+export default function EditProduct({id, setShowModal}) {
     const dispatch=useDispatch();
 
     const product=useSelector((state) => state.product.inventory[id])
@@ -23,7 +23,8 @@ export default function EditProduct({id}) {
             product_quantity
         }
 
-        dispatch(changeProduct(data))
+        dispatch(changeProduct(data));
+        setShowModal(false);
     }
 
     return (
