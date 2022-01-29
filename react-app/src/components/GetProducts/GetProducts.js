@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { getProducts } from '../../store/products';
 import { NavLink } from 'react-router-dom';
@@ -8,6 +8,17 @@ export default function GetProducts() {
     const dispatch=useDispatch();
     const productsObj = useSelector((state) => state.product.inventory);
     const products = Object.values(productsObj);
+
+    const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/api/users/');
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, []);
 
     useEffect(() => {
         dispatch(getProducts());
