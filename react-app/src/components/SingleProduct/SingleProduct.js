@@ -26,6 +26,7 @@ const [users, setUsers] = useState([]);
   
   
   const thisProductObj= useSelector((state) => state.product.inventory);
+  const products = Object.values(thisProductObj);
   const thisProductObjId=thisProductObj[id];
   const sessionUserCheck=useSelector((state) => state.session.user);
   let sessionLinks;
@@ -43,12 +44,18 @@ const [users, setUsers] = useState([]);
 }
 console.log('ARE YOU THE FUCKING USERS', users);
 console.log('THE FUCK AM I PULLING DOWN', thisProductObjId);
-const findUser=users.find(user => user.id ===thisProductObjId.user_id)
+const findUser=users?.find((user) => user?.id ===thisProductObjId?.user_id)
 
 console.log('IS THIS THE RIGHT GODDAMN USER', findUser);
 useEffect(() => {
     dispatch(getProducts())
 }, [dispatch])
+
+const fromSeller=products.filter(product => {
+  if(product.user_id === findUser?.id){
+    if(product.id !== thisProductObjId.id) return product;
+  }
+})
 
 return (
     <div className='single-parent'>
@@ -56,7 +63,7 @@ return (
     <div className='single-product-container'>
         <div className='single-product-content'>
         <h1>{thisProductObjId?.product_name}</h1>
-        <p className='product-owner'>Owned By:{findUser.username}</p>
+        {findUser ? <p>Sold By:{findUser?.username}</p>: null}
         <p className='single-product-price'>${thisProductObjId?.product_price.toFixed(2)}</p>
         <p className='single-product-desc'>{thisProductObjId?.product_description}</p>
         <p className='single-product-quan'>In Stock: {thisProductObjId?.product_quantity}</p>
