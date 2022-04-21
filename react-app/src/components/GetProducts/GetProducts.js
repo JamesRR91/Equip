@@ -1,14 +1,16 @@
-import { React, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { getProducts } from '../../store/products';
 import { NavLink } from 'react-router-dom';
 import './GetProducts.css';
 
-export default function GetProducts() {
+export default function GetProducts({cartItem, handleClickPlus}) {
     const dispatch=useDispatch();
     const productsObj = useSelector((state) => state.product.inventory);
     const products = Object.values(productsObj);
-
+    
+    console.log(productsObj);
+    console.log(products);
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch]);
@@ -25,6 +27,7 @@ export default function GetProducts() {
                         <li className='product-quantity'>Left in Stock!: {product_quantity}</li>
                     </ul>
                 </NavLink>
+                        <button className='add-to-cart'onClick={() => handleClickPlus(products)}>Add To Cart</button>
                  </div>
             ))}
         </div>

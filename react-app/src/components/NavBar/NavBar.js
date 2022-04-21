@@ -3,9 +3,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton.js';
+import GetCartModal from '../GetCart';
 import "./NavBar.css"
 
-const NavBar = ({loaded}) => {
+const NavBar = ({loaded, cartItem}) => {
   const sessionUser= useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -17,6 +18,9 @@ const NavBar = ({loaded}) => {
         <NavLink className="home-nav" to='/create_product' exact={true} activeClassName='active'>
         Add A Product
         </NavLink>
+        </li>
+        <li className='nav-element'>
+          <GetCartModal cartItem={cartItem}/>
         </li>
         <li className='nav-element'>
             <div id="dropdown">

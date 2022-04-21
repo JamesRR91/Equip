@@ -42,11 +42,7 @@ const [users, setUsers] = useState([]);
         </div>
     )
 }
-console.log('ARE YOU THE FUCKING USERS', users);
-console.log('THE FUCK AM I PULLING DOWN', thisProductObjId);
 const findUser=users?.find((user) => user?.id ===thisProductObjId?.user_id)
-
-console.log('IS THIS THE RIGHT GODDAMN USER', findUser);
 useEffect(() => {
     dispatch(getProducts())
 }, [dispatch])

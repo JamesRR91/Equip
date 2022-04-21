@@ -1,13 +1,26 @@
-from .db import db
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
-from sqlalchemy.schema import Column, ForeignKey, Table
-from sqlalchemy.types import Integer, String
+# from .db import db
+# from app.models import User, Product
+# from .user import User
+# from sqlalchemy import PrimaryKeyConstraint
 
-cart = db.Table(
-    'cart',
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('product_id', db.Integer, db.ForeignKey('products.id'), primary_key=True)
-)
+# class Cart(db.Model):
+#     __tablename__ = 'carts'
 
-print('TEST TEST')
+#     id = db.Column(db.Integer, primary_key=True)
+#     user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
+#     product_id = db.Column(db.Integer, db.ForeignKey(Product.id), nullable=False)
+#     quantity = db.Column(db.Integer)
+
+#     __table_args__ = (
+#         PrimaryKeyConstraint(user_id, product_id, name='user_cart_item_pk'),
+#     )
+
+#     product=db.Relationship('Product')    
+
+#     def to_dict(self):
+#         return {
+#             'product':self.product.to_dict(),
+#             'user_id': self.user_id,
+#             'product_id': self.product_id,
+#             'quantity': self.quantity
+#         }
