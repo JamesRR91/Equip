@@ -19,9 +19,7 @@ def shopping_cart(userId):
     )
     db.session.add(cart)
     db.session.commit()
-    print('CART', cart)
   
-  cartObj={}
   cartProducts = CartProduct.query.filter(CartProduct.cartId == cart.id).order_by(CartProduct.productId).all()
   # for value in cartProducts:
   #   if obj[value.productId]:
@@ -80,8 +78,6 @@ def add_Item(userId, productId):
   # oneItem=cartProducts.filter(CartProduct.productId == newItem['productId']).first()
   # upItem=oneItem.to_dict()
   # itemExists = db.session.query(db.exists().where(CartProduct.productId==newItem['productId'])).scalar()
-  print('AM I HITTING THE ROUTE')
-  print('CART PRODUCTS', cartProducts)
   if not any(item['productId'] == newItem['productId'] for item in cartProducts):
     db.session.add(newCartProduct)
     db.session.commit()
@@ -89,14 +85,8 @@ def add_Item(userId, productId):
     # print('ENTERING LOOP!')
     # print('ANY CART PRODUCTS HERE', cartProducts)
     if item['productId'] == newItem['productId']:
-      print('ALREADY EXISTS', item['productId'], item['quantity'])
-      print('THE NEW ITEM', newItem['productId'], newItem['quantity'])
       item['quantity']+=1
       break
-    # else:
-    #   db.session.add(newCartProduct)
-    #   db.session.commit()
-    #   print('ITS ADDED!')
 
 
 
