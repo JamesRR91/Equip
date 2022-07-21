@@ -28,31 +28,31 @@ function App() {
     dispatch(getProducts());
 }, [dispatch]);
 
-    const handleClickPlus = (products) => {
-      const isNewProduct = cartItem.find((item) => item.id === products.id);
-      if (isNewProduct) {
-          setCartItem(cartItem.map((item) => item.id === products.id ?
-              { ...isNewProduct, quantity: isNewProduct.quantity + 1 } : item)
-          );
-      } else {
-          setCartItem([...cartItem, { ...products, quantity: 1 }])
-      }
-  }
+  //   const handleClickPlus = (products) => {
+  //     const isNewProduct = cartItem.find((item) => item.id === products.id);
+  //     if (isNewProduct) {
+  //         setCartItem(cartItem.map((item) => item.id === products.id ?
+  //             { ...isNewProduct, quantity: isNewProduct.quantity + 1 } : item)
+  //         );
+  //     } else {
+  //         setCartItem([...cartItem, { ...products, quantity: 1 }])
+  //     }
+  // }
 
-    const handleClickMinus = (product) => {
-      const theProduct=cartItem.find((item) =>item.id === product.id);
-      if(theProduct.quantity===1) {
-          setCartItem(cartItem.filter((item) => item.id !== product.id))
-      } else {
-          setCartItem(cartItem.map((item) =>item.id===product.id ? {...theProduct, quantity:theProduct.quantity - 1}: item))
-      }
-  }
+  //   const handleClickMinus = (product) => {
+  //     const theProduct=cartItem.find((item) =>item.id === product.id);
+  //     if(theProduct.quantity===1) {
+  //         setCartItem(cartItem.filter((item) => item.id !== product.id))
+  //     } else {
+  //         setCartItem(cartItem.map((item) =>item.id===product.id ? {...theProduct, quantity:theProduct.quantity - 1}: item))
+  //     }
+  // }
 
-  const cartTotal = cartItem.reduce((price, item) => price + item.quantity * item.price, 0);
+  // const cartTotal = cartItem.reduce((price, item) => price + item.quantity * item.price, 0);
 
-  const clearCart = () => {
-      setCartItem([]);
-  }
+  // const clearCart = () => {
+  //     setCartItem([]);
+  // }
 
   useEffect(() => {
     (async() => {
@@ -67,7 +67,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar loaded={loaded} cartItem={cartItem} handleClickPlus={handleClickPlus} handleClickMinus={handleClickMinus}/>
+      <NavBar loaded={loaded} cartItem={cartItem} />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -82,7 +82,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true}>
-          <LandingPage cartItem={cartItem} handleClickPlus={handleClickPlus} />
+          <LandingPage />
         </Route>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
@@ -97,7 +97,7 @@ function App() {
         <EditProduct />
         </Route>
         <Route path='/cart'>
-        <CartFunc products={products}/>
+        <CartFunc/>
         </Route>
       </Switch>
     </BrowserRouter>

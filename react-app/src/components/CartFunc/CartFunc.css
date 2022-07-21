@@ -1,0 +1,18 @@
+.item-span {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 2px solid black;
+    background: #EBD5B3;
+}
+
+.item-content {
+    width: 20rem;
+    height: 30rem;
+    border-radius: 2px solid black;
+    background: #EBD5B3;
+}
+
+.product-name {
+    width: 5rem;
+    height: 10rem;
+}

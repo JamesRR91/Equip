@@ -6,9 +6,8 @@ import ProfileButton from './ProfileButton.js';
 import GetCartModal from '../GetCart';
 import "./NavBar.css"
 
-const NavBar = ({loaded, cartItem}) => {
+const NavBar = ({loaded}) => {
   const sessionUser= useSelector(state => state.session.user);
-
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -20,7 +19,7 @@ const NavBar = ({loaded, cartItem}) => {
         </NavLink>
         </li>
         <li className='nav-element'>
-          <GetCartModal cartItem={cartItem}/>
+          <GetCartModal />
         </li>
         <li className='nav-element'>
             <div id="dropdown">

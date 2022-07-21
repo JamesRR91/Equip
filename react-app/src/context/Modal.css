@@ -1,5 +1,5 @@
 #modal {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;
@@ -236,3 +236,18 @@ label {
   padding: 2px;
   padding-bottom: 2px;
 }
+
+.cart-parent {
+  width: 20rem;
+    height: 30rem;
+    border-radius: 2px solid black;
+    background: #EBD5B3;
+}
+
+.shopping-cart {
+    border-radius: 2px solid black;
+    background: #EBD5B3;
+    font-size: 0.4em;
+}
+
+

@@ -1,4 +1,5 @@
 from .db import db
+from .cart_product import CartProduct
 
 class Product(db.Model):
     __tablename__='products'
@@ -9,8 +10,10 @@ class Product(db.Model):
     product_price=db.Column(db.Float, nullable=False)
     product_quantity=db.Column(db.Integer, nullable=False)
     user_id=db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
     user=db.relationship('User', back_populates='products')
     review=db.relationship('Review', back_populates='product', cascade='all, delete')
+    cart_products=db.relationship("CartProduct", back_populates="product")
 
     def to_dict(self):
         return {

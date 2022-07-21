@@ -1,59 +1,90 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getShoppingCart, removeCartItem, checkoutItems } from '../../store/cart';
+import { getProducts } from '../../store/products';
+import { useParams, useHistory } from 'react-router-dom';
+import CartFunc from '../CartFunc/CartFunc';
 
-export default function CartItems({ user_id, product_id, quantity }) {
-    const [cartItem, setCartItem] = useState([]);
+export default function GetCart({setShowModal}) {
 
-    const handleClickPlus = (product) => {
-        const isNewProduct = cartItem.find((item) => item.id === product.id);
-        if (isNewProduct) {
-            setCartItem(cartItem.map((item) => item.id === product.id ?
-                { ...isNewProduct, quantity: isNewProduct.quantity + 1 } : item)
-            );
-        } else {
-            setCartItem([...cartItem, { ...product, quantity: 1 }])
-        }
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const user = useSelector(state => state.session.user)
+    const productObj = useSelector((state) => state.product.inventory);
+    const products = Object.values(productObj);
+    const shoppingCart = useSelector(state => state.cartItems.cart);
+    const cartProduct = useSelector(state => state.cartItems.cartProducts);
+
+
+    useEffect(() => {
+        dispatch(getProducts());
+        dispatch(getShoppingCart(user?.id))
+    }, [dispatch, user?.id])
+
+
+
+    const clearCart = (cart) => {
+        return dispatch(checkoutItems(shoppingCart.id))
     }
 
-    const handleClickMinus = (product) => {
-        const theProduct=cartItem.find((item) =>item.id === product.id);
-        if(theProduct.quantity===1) {
-            setCartItem(cartItem.filter((item) => item.id !== product.id))
-        } else {
-            setCartItem(cartItem.map((item) =>item.id===product.id ? {...theProduct, quantity:theProduct.quantity - 1}: item))
-        }
-    }
-
-    const cartTotal = cartItem.reduce((price, item) => price + item.quantity * item.price, 0);
-
-    const clearCart = () => {
-        setCartItem([]);
+    const deleteCartProduct = (product) => {
+        return dispatch(removeCartItem(product, shoppingCart?.id));
     }
 
     return (
-        <div className="cart-items-container">
-            <div className="cart-items-list">Cart Items</div>
-
-            {cartItem.length === 0 && (
-                <div className="cart-empty">Cart is empty.</div>
-            )}
-
-            <div>
-                {cartItem.map((item) => (
-                    <div key={item.id} className="cart-item-single">
-                        <div className="cart-item-clear">{cartItem.length >= 1 && (<button className="cart-clear-button" onClick={clearCart}>Clear Cart</button>)}
-                            <div className="cart-item-name">{item.name}</div>
-                            <div className="cart-item-buttons">
-                                <button className="add-item" onClick={() => handleClickPlus(item)}>+</button>
-                                <button className="remove-item" onClick={() => handleClickMinus(item)}>-</button>
-                            </div>
-                            <div className="cart-item-price">{item.price} * ${item.quantity}</div>
-                            <div className="cart-item-total">${cartTotal}</div>
-
-                        </div>
-                    </div>
-                ))}
+            <div className="cart-container">
+              <div className="shopping-cart">
+                <div className="shopping-cart-title">
+                  <h1 id="shopping-cart-title">Shopping Cart</h1>
+                </div>
+                <div className="items-amount">
+                  <h3>ITEMS ({cartProduct?.length})</h3>
+                </div>
+                {cartProduct?.length === 0 && (
+                  <h3 className="no-items">No Items Added Yet!</h3>
+                )}
+                {cartProduct?.map((item) => {
+                  console.log('ITEM', item);
+                  const id = item.productId;
+                  const product = productObj[id];
+                  return (
+                    <CartFunc
+                      item={item}
+                      shoppingCart={shoppingCart}
+                      product={product}
+                      deleteCartProduct={deleteCartProduct}
+                    />
+                  );
+                })}
+              </div>
+              <div className="checkout">
+                <div className="cart-total">
+                  <h2>{`Total: $${shoppingCart?.total}`}</h2>
+                </div>
+                <div className="checkout-buttons">
+                  <button
+                    id="checkout-button"
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      setShowModal(false)
+                    }}
+                  >Continue Shopping</button>
+                  <button
+                    id="checkout-button"
+                    type="button"
+                    onClick={(e) => {
+                      alert("Thanks for your purchase!")
+                      history.push('/')
+                      setShowModal(false)
+                      clearCart(shoppingCart)
+                    }}
+                  >Checkout</button>
+                </div>
+              </div>
             </div>
-        </div>
-    )
-
-}
+          );
+        };
+        
+        

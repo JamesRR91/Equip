@@ -3,7 +3,7 @@ import { Modal } from '../../context/Modal';
 import GetCart from './GetCart';
 
 
-function GetCartModal({cartItem}) {
+function GetCartModal() {
   const [showModal, setShowModal] = useState(false);
 
   function handleClick() {
@@ -12,10 +12,10 @@ function GetCartModal({cartItem}) {
 
   return (
         <div>
-          <button className='modal-button-review' onClick={handleClick}>Add To Cart</button>
+          <button className='modal-button-cart' onClick={handleClick}>My Cart</button>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-              <GetCart cartItem={cartItem} setShowModal={setShowModal}/>
+              <GetCart setShowModal={setShowModal}/>
             </Modal>
           )}
         </div>

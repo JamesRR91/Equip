@@ -1,65 +1,88 @@
-// const GET_CART = "cart/GET_CART"
-const ADD_TO_CART = "cart/ADD_CART"
-const REMOVE_FROM_CART='cart/DELETE_CART'
+const UPDATE_CART = "carts/GET_CART";
 
-// const getCart = (cart) => ({
-//     type: GET_CART,
-//     cart
-// })
-// const addCart = (newCartItem) => ({
-//     type: ADD_CART,
-//     newCartItem
-// })
+const updateCart = (cartData) => ({
+  type: UPDATE_CART,
+  cartData,
+});
 
-// const deleteCart=(cartItemId) => ({
-//     type: DELETE_CART,
-//     cartItemId
-// })
 
-// export const getCartItems = (userId) => async (dispatch) => {
-//     const response = await fetch(`/api/cart/`);
-//     const cartItems= await response.json();
-//     dispatch(getCart(cartItems));
-//     return cartItems;        
-// }
 
-export const addToCart=(item) => {
-    return {type: "ADD_TO_CART", payload: item}
+
+export const getShoppingCart = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/cart/${userId}`);
+  const cartData = await response.json();
+  dispatch(updateCart(cartData));
+};
+
+export const addToCart = (productId, userId) => async (dispatch) => {
+  const response = await fetch(`/api/cart/${userId}/${productId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      userId,
+      productId
+    }),
+  });
+
+  const data = await response.json()
+  return dispatch(updateCart(data))
+};
+
+export const updateShoppingCart = (itemId, quantity, cartId) => async (dispatch) => {
+  const response = await fetch(`/api/cart/update`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      itemId,
+      quantity,
+      cartId
+    })
+  })
+
+  const data = await response.json()
+  dispatch(updateCart(data))
 }
 
-export const removeFromCart=(item, cart) => {
-    let copy=[...cart];
-    copy=copy.filter((cartItem) =>cartItem.id !== item.id)
-    return {type: "REMOVE_FROM_CART", payload: copy}
+export const checkoutItems = (cartId) => async (dispatch) => {
+  const response = await fetch(`/api/cart/purchase/${cartId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  })
+  const data = response.json()
+
+  dispatch(updateCart(data))
 }
 
-// export const Checkout = (cartId, price, userId) => async (dispatch) => {
-//     const response = await fetch(`/api/cart/${cartId}/checkout/`, {
-//         method: 'PUT',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             price
-//         })
-//     })
-//     if (response.ok) {
-//         const { cart, products } = await response.json();
-//         dispatch(putCart(cart, products))
-//         return null;
-//     }
-// }
-    const initialState={cart: [], }
-const cartReducer = (state = initialState, action) => {
-    const {type, payload}=action;
-    switch (type) {
-        case ADD_TO_CART:
-            return { ...state, cart: [...state.cart, payload]}
-        case REMOVE_FROM_CART:
-            return { ...state, cart: payload, }
-        default:
-            return {...state};
-    }
+export const removeCartItem = (product, cartId) => async (dispatch) => {
+  const response = await fetch(`/api/cart/${product.id}/${cartId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  })
+  
+  const newCartData = await response.json()
+  dispatch(updateCart(newCartData))
 }
 
-export default cartReducer
+const shoppingCartReducer = (state = {}, action) => {
+  let newState;
+  switch (action.type) {
+    case UPDATE_CART:
+      newState = { ...state };
+      newState["cart"] = action.cartData.cart;
+      newState['cartProducts'] = action.cartData.cartProducts;
+      return newState;
+    
+    default:
+      return state;
+  }
+};
+
+export default shoppingCartReducer;
