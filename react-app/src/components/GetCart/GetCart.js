@@ -45,7 +45,6 @@ export default function GetCart({setShowModal}) {
                   <h3 className="no-items">No Items Added Yet!</h3>
                 )}
                 {cartProduct?.map((item) => {
-                  console.log('ITEM', item);
                   const id = item.productId;
                   const product = productObj[id];
                   return (
