@@ -30,11 +30,6 @@ export default function GetProducts() {
         // } else {
         //     setQuantity(quantity+1)
         // }
-        console.log('Target', id)
-        console.log('THE ID', user.id);
-        console.log('THE PRODUCT',productsObj[id].id);
-        console.log('THE QUANTITY', quantity);
-        console.log('SHOPPING CART', shoppingCart);
         // const newCartProduct={
             //     userId: user.id,
             //     productId: productsObj[id],

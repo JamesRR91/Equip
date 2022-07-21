@@ -6,15 +6,6 @@ const CartFunc = ({ item, shoppingCart, product, deleteCartProduct }) => {
   const [quantity, setQuantity] = useState(item?.quantity)
   const dispatch = useDispatch()
 
-  console.log('FUNC ITEM', item);
-  console.log('TEST FUNC ITEM', item?.id);
-  console.log('FUNC CART', shoppingCart);
-  console.log('TEST FUNC CART', shoppingCart?.id)
-  console.log('FUNC PRODUCT', product);
-  console.log('DELETE FUNC', deleteCartProduct);
-  console.log('FUNC QUANTITY', quantity);
-  console.log('TEST FUNC QUAN', item?.quantity)
-
   useEffect(() => {
     dispatch(updateShoppingCart(item?.id, quantity, shoppingCart?.id))
   }, [dispatch, quantity, item?.id, shoppingCart?.id])
