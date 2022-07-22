@@ -16,5 +16,5 @@ jobs:
     - name: Build and push
       run: heroku container:push -a equip-etsy-clone web
     - name: Release
-      run: heroku container:release -a equip-etsy-clone. web
+      run: heroku container:release -a equip-etsy-clone web
 
