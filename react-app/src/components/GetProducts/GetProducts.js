@@ -37,7 +37,6 @@ export default function GetProducts() {
             // }
             // console.log('NEW PRODUCT', newCartProduct);
             dispatch(addToCart(id, user.id))
-            console.log('CAAAAAART', cartProduct);
         // setQuantity(1);
     }
 
