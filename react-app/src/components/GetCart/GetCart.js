@@ -59,10 +59,11 @@ export default function GetCart({setShowModal}) {
               </div>
               <div className="checkout">
                 <div className="cart-total">
-                  <h2>{`Total: $${shoppingCart?.total}`}</h2>
+                  <h2>{`Total: $${shoppingCart?.total.toFixed(2)}`}</h2>
                 </div>
                 <div className="checkout-buttons">
                   <button
+                    className='modal-button'
                     id="checkout-button"
                     type="button"
                     onClick={(e) => {
@@ -71,6 +72,7 @@ export default function GetCart({setShowModal}) {
                     }}
                   >Continue Shopping</button>
                   <button
+                    className='modal-button'
                     id="checkout-button"
                     type="button"
                     onClick={(e) => {

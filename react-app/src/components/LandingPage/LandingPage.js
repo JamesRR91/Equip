@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import './index.css';
 import GetProducts from '../GetProducts/GetProducts';
 import {getShoppingCart } from '../../store/cart'
+import CarouselTest from '../CarouselTest';
 
 export default function LandingPage() {
   const user = useSelector(state => state.session.user)
@@ -18,6 +19,9 @@ export default function LandingPage() {
               <h2 className='welcome'>Welcome to Equip</h2>
               <h4 className='quote'>"Restock for the dungeons ahead!"</h4>
             </div>
+
+            <CarouselTest />
+
             <GetProducts />
           </div>
         </div>

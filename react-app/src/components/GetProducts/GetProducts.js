@@ -16,6 +16,7 @@ export default function GetProducts() {
     // const { id } = useParams();
     const [quantity, setQuantity] = useState(1);
     // const product = products[id];
+    // console.log('FOR COMP', products);
     
     
     useEffect(() => {
@@ -57,11 +58,12 @@ export default function GetProducts() {
                     {user?.id &&
                         <>
                             <button
-                                className="add-cart"
+                                className="modal-button"
                                 type="button"
                                 onClick={(e) =>addItem(e, id) }
                             >
                                 Add to Cart
+                                <i class="fa-regular fa-basket-shopping-simple"></i>
                             </button>
                             {/* <label className="product-quantity">
                                 Quantity

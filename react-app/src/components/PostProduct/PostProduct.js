@@ -61,7 +61,10 @@ export default function PostProduct(){
                 placeholder='How many do you have available for sale?'
                 required
                 />
-                <button className='submit-button' type='submit'>Create</button>
+                <button className='modal-button' type='submit'>
+                    Create
+                    <i class="fas fa-plus-circle"></i>
+                    </button>
             </form>
         </div>
         </div>

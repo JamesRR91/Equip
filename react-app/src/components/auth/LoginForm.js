@@ -68,8 +68,8 @@ const LoginForm = () => {
       <div>
 
 
-        <button type='submit'>Login</button>
-        <button className="aa"
+        <button type='submit' className='modal-button'>Login</button>
+        <button className="modal-button"
             onClick={() => {
               setEmail("demo@aa.io");
               setPassword("password");

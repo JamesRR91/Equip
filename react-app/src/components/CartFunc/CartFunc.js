@@ -30,6 +30,7 @@ const CartFunc = ({ item, shoppingCart, product, deleteCartProduct }) => {
             </div>
             <div className="quantity-modifier">
               <button
+                className="modal-button"
                 type="button"
                 onClick={(e) => {
                   e.preventDefault()
@@ -40,6 +41,7 @@ const CartFunc = ({ item, shoppingCart, product, deleteCartProduct }) => {
               </button>
               <p className="item-p">{item?.quantity}</p>
               <button
+                className="modal-button"
                 type="button"
                 onClick={(e) => {
                   e.preventDefault()
@@ -55,7 +57,7 @@ const CartFunc = ({ item, shoppingCart, product, deleteCartProduct }) => {
             </div>
           <div className="remove-btn-div">
             <button
-              className="remove-button"
+              className="modal-button"
               type="button"
               onClick={(e) => {
                 e.preventDefault();

@@ -27,9 +27,9 @@ function ProfileButton({ user }) {
     }
     return (
         <div className='center-profile'>
+          <button className= 'modal-button' onClick={openMenu}>
           <span className='welcome-message'>{`Welcome, ${user.username}!`}</span>
-          <button onClick={openMenu}>
-            <i className="fas fa-user"></i>
+            <i className="fas fa-user fa-fw"></i>
           </button>
           {showMenu && (
             <ul className="profile-dropdown">

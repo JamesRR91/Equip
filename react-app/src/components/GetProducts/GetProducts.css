@@ -10,8 +10,8 @@
     text-align: center;
     border-radius: 50px;
     transition:0.3s;
-    width: 50rem;
-    height: 70rem;
+    width: 20rem;
+    height: 20rem;
     margin-top: 10rem;
     padding-top: 10px;
 }
@@ -89,3 +89,25 @@
     padding-top: 10%;
     text-align: center;
 }
+
+.gallery {
+    background: #EEE;
+  }
+  
+  .gallery-cell {
+    width: 66%;
+    height: 200px;
+    margin-right: 10px;
+    background: #8C8;
+    counter-increment: gallery-cell;
+  }
+  
+   cell number 
+   .gallery-cell:before {
+    display: block;
+    text-align: center;
+    content: counter(gallery-cell);
+    line-height: 200px;
+    font-size: 80px;
+    color: white;
+  } 

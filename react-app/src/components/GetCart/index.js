@@ -12,7 +12,9 @@ function GetCartModal() {
 
   return (
         <div>
-          <button className='modal-button-cart' onClick={handleClick}>My Cart</button>
+          <button className='modal-button' onClick={handleClick}>My Cart
+          <i class="fas fa-shopping-cart fa-fw"></i>
+          </button>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
               <GetCart setShowModal={setShowModal}/>

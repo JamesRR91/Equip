@@ -95,7 +95,7 @@ const SignUpForm = () => {
         ></input></td>
       </tr>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button type='submit' className='modal-button'>Sign Up</button>
     </form>
     </div>
     </div>
