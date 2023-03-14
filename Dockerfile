@@ -13,7 +13,6 @@ RUN npm run build
 FROM python:3.9
 
 # Setup Flask environment
-RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
@@ -28,8 +27,8 @@ COPY --from=build-stage /react-app/build/* app/static/
 RUN pip install -r requirements.txt
 RUN pip install psycopg2
 
-RUN flask db upgrade
-RUN flask seed all
+RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env flask db upgrade
+RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env flask seed all
 
 # Run flask environment
 CMD gunicorn app:app
