@@ -13,6 +13,7 @@ RUN npm run build
 FROM python:3.9
 
 # Setup Flask environment
+RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
