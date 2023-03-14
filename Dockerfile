@@ -1,3 +1,4 @@
+# syntax = docker/dockerfile:1.2
 FROM node:12 AS build-stage
 
 WORKDIR /react-app
