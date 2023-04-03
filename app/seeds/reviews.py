@@ -1,4 +1,4 @@
-from app.models import db, Review
+from app.models import db, Review, environment, SCHEMA
 
 def seed_reviews():
     testReview= Review(review_text='This is a test review', user_id=1, product_id=1)
@@ -18,5 +18,9 @@ def seed_reviews():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_reviews():
-    db.session.execute('TRUNCATE reviews RESTART IDENTITY CASCADE;')
+    if environment == 'production':
+        db.session.execute(f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM reviews")
+
     db.session.commit()

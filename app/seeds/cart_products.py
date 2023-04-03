@@ -1,4 +1,4 @@
-from app.models import db, cart_product, Cart, Product, CartProduct
+from app.models import db, cart_product, Cart, Product, CartProduct, environment, SCHEMA
 
 def seed_cart_products():
     test= Product(
@@ -25,8 +25,8 @@ def seed_cart_products():
     db.session.add(cart_2)
 
     test_cart_product=CartProduct(
-        id=1,  
-        productId=3, 
+        id=1,
+        productId=3,
         cartId=1,
         quantity=1
     )
@@ -39,7 +39,13 @@ def seed_cart_products():
     db.session.commit()
 
 def undo_cart_products():
-    db.session.execute('TRUNCATE carts RESTART IDENTITY CASCADE;')
-    db.session.execute('TRUNCATE products RESTART IDENTITY CASCADE;')
-    db.session.execute('TRUNCATE cart_product RESTART IDENTITY CASCADE;')
+    if environment == 'production':
+        db.session.execute(f"TRUNCATE table {SCHEMA}.carts RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.products RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.cart_products RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM carts")
+        db.session.execute("DELETE FROM products")
+        db.session.execute("DELETE FROM cart_products")
+        
     db.session.commit()
