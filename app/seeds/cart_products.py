@@ -1,4 +1,5 @@
-from app.models import db, cart_product, Cart, Product, CartProduct, environment, SCHEMA
+from app.models import db, cart_product, Cart, Product, CartProduct, SCHEMA
+from app.models.db import environment
 
 def seed_cart_products():
     test= Product(
@@ -47,5 +48,5 @@ def undo_cart_products():
         db.session.execute("DELETE FROM carts")
         db.session.execute("DELETE FROM products")
         db.session.execute("DELETE FROM cart_products")
-        
+
     db.session.commit()
