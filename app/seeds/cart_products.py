@@ -1,5 +1,5 @@
-from app.models import db, cart_product, Cart, Product, CartProduct, SCHEMA
-from app.models.db import environment
+from app.models import db, cart_product, Cart, Product, CartProduct
+from app.models.db import environment, SCHEMA
 
 def seed_cart_products():
     test= Product(

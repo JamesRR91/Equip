@@ -1,5 +1,5 @@
-from app.models import db, Review, SCHEMA
-from app.models.db import environment
+from app.models import db, Review
+from app.models.db import environment, SCHEMA
 
 def seed_reviews():
     testReview= Review(review_text='This is a test review', user_id=1, product_id=1)
