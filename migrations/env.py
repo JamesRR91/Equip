@@ -93,7 +93,7 @@ def run_migrations_online():
 
             if environment == 'production':
                 print('THIS IS CONNECTION', connection)
-                connection.execute(f"CREATE SCHEMA IF NOT EXISTS{SCHEMA}")
+                connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
 
             with context.begin_transaction():
                 if environment == 'production':
