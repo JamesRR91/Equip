@@ -20,7 +20,7 @@ const CartFunc = ({ item, shoppingCart, product, deleteCartProduct }) => {
         <div className="item-changes">
           <div className="item-price">
             <div className="price-element">
-              <p className="item-p">$ {product?.product_price}</p>
+              <p className="item-p">$ {product?.product_price.toFixed(2)}</p>
             </div>
             <div className="price-element">
               <p className="item-p">x</p>
@@ -51,7 +51,7 @@ const CartFunc = ({ item, shoppingCart, product, deleteCartProduct }) => {
               </button>
             </div>
             <div className="price-element">
-              <p className="item-p">$ {product?.product_price * item?.quantity}</p>
+              <p className="item-p">$ {product?.product_price * item?.quantity}.toFixed(2)</p>
             </div>
           <div className="remove-btn-div">
             <button
